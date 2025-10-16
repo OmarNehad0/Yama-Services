@@ -56,7 +56,7 @@ intents.members = True
 # Create bot instance with intents
 bot = commands.Bot(command_prefix="!", intents=intents)
 
-LOG_CHANNEL_ID = 1416754787566747710
+LOG_CHANNEL_ID = 1428430067016405002
 
 class InfoModal(Modal, title="Provide Your Information"):
     def __init__(self, customer: discord.Member, worker: discord.Member):
@@ -189,7 +189,7 @@ async def inf_command(interaction: discord.Interaction, worker: discord.Member, 
 
 
 
-FEEDBACK_CHANNEL_ID = 1416754830940049439  # Replace with your feedback channel ID
+FEEDBACK_CHANNEL_ID = 1426550046970613821  # Replace with your feedback channel ID
 
 # Feedback command
 @bot.command(name="f")
@@ -209,7 +209,7 @@ async def feedback(ctx):
             label="Vouch For Us On Sythe!.",
             url="https://www.sythe.org/threads/www-sythe-org-threads-cynx-osrs-service-vouch-thread/page-6#post-85913828",
             style=discord.ButtonStyle.url,
-            emoji=discord.PartialEmoji(name="sytheicon", id=1332330797998280724)
+            emoji=discord.PartialEmoji(name="sytheicon", id=1428430819042787369)
             ))
     
         async def button_callback(self, interaction: Interaction):
@@ -228,7 +228,7 @@ async def feedback(ctx):
 
             # Create the embed with a polished structure
             embed = Embed(
-                title="🥇 Grinders Vouches! 🥇",
+                title="🥇 Yama Vouches! 🥇",
                 color = discord.Color.from_rgb(200, 0, 0),  # red color
                 description=(
                     f"**Date:** `{interaction.created_at.strftime('%B %d, %Y')}`\n"
@@ -261,7 +261,7 @@ async def feedback(ctx):
     )
     initial_embed.set_author(name=ctx.author.name, icon_url=ctx.author.display_avatar.url)
     initial_embed.set_thumbnail(url="https://media.discordapp.net/attachments/1208792947232079955/1376855814735921212/discord_with_services_avatar.gif?ex=6836d866&is=683586e6&hm=c818d597519f4b2e55c77aeae4affbf0397e12591743e1069582f605c125f80c&=")
-    initial_embed.set_footer(text="Grinders Services", icon_url="https://media.discordapp.net/attachments/1208792947232079955/1376855814735921212/discord_with_services_avatar.gif?ex=6836d866&is=683586e6&hm=c818d597519f4b2e55c77aeae4affbf0397e12591743e1069582f605c125f80c&=")
+    initial_embed.set_footer(text="Yama Services", icon_url="https://media.discordapp.net/attachments/1208792947232079955/1376855814735921212/discord_with_services_avatar.gif?ex=6836d866&is=683586e6&hm=c818d597519f4b2e55c77aeae4affbf0397e12591743e1069582f605c125f80c&=")
 
     # Send the embed with rating buttons
     view = FeedbackView()
@@ -276,86 +276,13 @@ async def feedback(ctx):
 
 # Payment methods with custom emojis and addresses
 payment_methods_with_emojis = {
-    "Bitcoin +1%": ("1D398RDWnEW4DRYeQ3DKSmbzT1sMuM1xgW", "<:bitcoinbtclogo:1210395515133362316>"),
-    "USDT (TRC20) +1%": ("TXfZyGJ7Jbx94uD8vzdFoEFfcS7heJDZBW", "<:R5:1210457644394086421>"),
-    "Eth (Erc20) +1%" : ("0x40a6190110d3f1d8a7936eb0de3287b1d88921dc" , "<:R5:1210457644394086421>"),
-    "Binance to Binance & USDT +2%" : ("461848277", "<:OIP2:1210456498929532948>"),
-    "LiteCoin +1%" :("LQ3yQWMstLTenNRWbFiwiNXkua4PoKdrZY" ,"<:1490823:1210457048987467796>"),
-    "Ada (Cardano) +1%" : ("addr1v92xngktp696jnpav2vjyps2a5hqzdpxkfdlqd98ed4hgscsy74a2", "<:cardanocrypto48047104002423:1210458255411642378>"),
+    "Bitcoin +1%": ("1B1SLkF3KTzx7mh1Ed6ixfShzFqSVYusgT", "<:Bitcoin:1428432416564838440>"),
+    "USDT (TRC20) +1%": ("TDYDN9Xtr14MhkvN5GRubSjhzLmdFbesJd", "<:TetherUSDTicon:1428433565305143529>"),
+    "USDT (Erc20) +1%" : ("0x78b61d855e48e7992a893345a6dd49bf1cda8fcf" , "<:TetherUSDTicon:1428433565305143529>"),
+    "Binance to Binance & USDT +2%" : ("491415541", "<:1681906467binancelogotransparent:1428433162060566548>"),
+    "LiteCoin +1%" :("LdbTAqF3brHb6TghNKVAToxoeX7xmzWHQn " ,"<:10752790:1428433732653678623>"),
+    "ETH (ERC20)" : ("0x78b61d855e48e7992a893345a6dd49bf1cda8fcf", "<:EthereumETHicon:1428433826169749525>")
     
-    # Payment Methods Requiring Additional Notes
-    "Venmo +15%" : ("@Aspayops22", "<:29806venmo:1340476900010885120>"),
-    "Zelle +15%" : ("908-922-9027", "<:7079zelle:1340476895732699268>"),
-    "Apple Pay +15%" : ("908-922-9027", "<:25515applepay:1340476897930252308>"),
-    "Cash App +20%" : ("$vincentzhou1", "<:55778cashapp:1340476905870327840>"),
-    "E-Transfer +20%" : ("willhu14@gmail.com", "<:Paymentsiconbyback1design11:1322349373295820881>"),
-    "Wise +15%" : ("AUTONOMOUS SOLUTIONS LLC", "<:images2:1362712820038500474>"),
-    "Revoult +15%" : ("@ishmaeyld", "<:Revolut:1362720533980119113>"),
-    "Chime +15%" : ("$thatkidsmh25", "<:unnamed:1362721113746047006>")
-}
-
-# Payment Notes (for specific payment methods)
-special_payment_methods = [
-    "Venmo +15%", "Zelle +15%", "Apple Pay +15%", 
-    "Cash App +20%", "E-Transfer +20%", "Wise +15%", "Revoult +15%","Chime +15%"
-]
-
-specific_notes_by_method = {
-    "Cash App +20%": (
-        "**__Cash App Instructions__**\n"
-        "➤ **ID verification required** for payments over $100 USD.\n"
-        "➤ Payment must come directly from **Cash App balance**.\n"
-        "➤ No bank/credit/debit card payments.\n"
-        "➤ **Confirmation might take longer** than other methods."
-    ),
-    "Chime +15%": (
-        "<:unnamed:1362721113746047006> **__Chime Instructions__** <:unnamed:1362721113746047006>\n"
-        "**Availability:** 💫 **```9AM - 10PM CST```**\n"
-        "➤ **Log in to the Chime app or website.**\n"
-        "➤ **Enter $thatkidsmh25 as the recipient (email or phone).**.\n"
-        "➤ **Enter the payment amount.**\n**Choose your Chime Spending account.**\n\n**In the note section, add your Discord name and server (Discord name + Server name)**\n"
-        "➤ **Review and confirm the payment.**\n\n**Send it and share your receipt.**"
-    ),
-    "Venmo +15%": (
-        "<:29806venmo:1340476900010885120> **__Venmo Instructions__** <:29806venmo:1340476900010885120>\n\n"
-        "**Availability:** 💫 **```9AM - 10PM CST```**\n"
-        "➤ **Step 1: ✅**\nBefore Sending Payment: Activate Your Venmo Card Tap Card\n→ Sign up for Venmo Debit Card\n→ Follow steps to activate.\nAdd Funds to Your Venmo Balance Tap Me\n→ Add Money → Deposit funds into your account.\n\n"
-        "➤ **Step 2: ✅**\nMoney must be sent from **account balance**, not card or bank.\nAdd your Discord name + server in the description.\n Example: @Bobby22 - Discord Name Select Venmo Balance and tap Pay.\n\n"
-        "➤ <:1209685252553842737:1362706498312077504> **Important:**\nDo NOT select payment protection—funds will be held for 21 days before a refund is possible.\n Payments NOT made from Venmo Balance will be refunded.\n **Provide a screenshot of the completed payment.**"
-    ),
-    "Zelle +15%": (
-        "<:7079zelle:1340476895732699268> **__Zelle Instructions__** <:7079zelle:1340476895732699268>\n\n"
-        "**Availability:** 💫 **```9AM - 10PM CST```**\n"
-        "➤ **Zelle info:**\n\nZelle Number:\n**```908-922-9027```**\nName:\n**```AUTONOMOUS SOLUTIONS LLC```**\n"
-        "➤ <:1209685252553842737:1362706498312077504> **Please before send**\n➤ Add your Discord name or order number AND server name to the message.\n➤ Then send and share your receipt."
-    ),
-    "Apple Pay +15%": (
-        "<:25515applepay:1340476897930252308> **__Apple Pay Instructions__** <:25515applepay:1340476897930252308>\n\n"
-        "**Availability:** 💫 **```9AM - 10PM CST```**\n"
-        "➤ **❓ Step-by-step:**\n\n**1**. Launch iMessage on your device.\n**2**. Enter recipient number, 908-922-9027.\n**3**. Click the '+' icon and select the ApplePay method.\n**4**. Choose how much you wanna send, add your Discord name or order number AND server name to the message.\n**5**. Tap Send and share your receipt."
-    ),
-    "E-Transfer +20%": (
-        "**__E-Transfer Instructions__**\n\n"
-        "➤ Only for Canadian customers.\n"
-        "➤ Use exact email provided.\n"
-        "➤ May require ID for high-value transfers."
-    ),
-    "Wise +15%": (
-        "<:images2:1362712820038500474> **__Wise Instructions__** <:images2:1362712820038500474>\n\n"
-        "**Availability:** 💫 **```9AM - 10PM CST```**\n"
-        "**Payement Link:** [Pay Wise](https://wise.com/pay/business/autonomoussolutionsllc) \n\n"
-        "**Account Holder:** 🕵️‍♂️ **```AUTONOMOUS SOLUTIONS LLC```**"
-        "➤ Send via **Wise balance only**.\n"
-        "➤ No external card/bank payments.\n"
-        "➤ **Transaction limit of 500€, DO NOT send more**."
-    ),
-    "Revoult +15%": (
-        "<:Revolut:1362720533980119113> **__Revolut Instructions__** <:Revolut:1362720533980119113>\n\n"
-        "**Availability:** 💫 **```9AM - 10PM CST```**\n**➔ Bank Transfer**\n**➔ Debit Card**\n**➔ Google Pay**\n**➔ iDeal**\n\n"
-        "➤ **❓ Step-by-step:**\n**Here's how to send payments using the Revolut App:**\n**1. Launch the App on your device;**\n**2. Select your currency (Dollars or Euros) and tap on the button labeled Add Money;**\n**3. Select the payment method you want to use to fund your account;**\n**4. Once your funds are available, tap on the center button with two arrows;**\n**5. In the search bar at the top, type the recipient's tag `@ishmaeyld`;**\n**6. Fill the note with your personal information (Discord name + Server name);**\n**7. Once you find it, tap the Send button located on the bottom right corner;**\n**8. Choose how much you wanna send, add your Discord name or order number on notes;**\n**9. Send it and share your receipt**"
-    )
-}
-
 
 # Command to display payment options
 @bot.command(name="pay")
@@ -496,7 +423,7 @@ def price_to_usd(price):
     return price / 1_000_000 * usd_rate_per_million
 
 # Log channel ID (replace this with the actual channel ID)
-LOG_CHANNEL_ID = 1416754787566747710  # Replace with your channel ID
+LOG_CHANNEL_ID = 1428430067016405002  # Replace with your channel ID
 
 # Define the Kill Count Form Modal
 # Define the Kill Count Form Modal
@@ -559,13 +486,13 @@ class KillCountModal(Modal):
                 discounted_price_formatted = format_price(total_price_after_discount)
 
                 # Adding the calculation breakdown in the embed
-                field_value = (f"**{format_price(original_price_per_kill)} x {kill_count} KC = {original_price_formatted}** <:240pxCoins_detail:1416768496020488303>")
+                field_value = (f"**{format_price(original_price_per_kill)} x {kill_count} KC = {original_price_formatted}** <:240pxCoins_detail:1428434758135975936>")
 
                 # Add discounted price only if discount is applied
                 if discount_percent > 0:
-                    field_value += f"\n**Discounted Price:** **{discounted_price_formatted}** <:240pxCoins_detail:1416768496020488303>"
+                    field_value += f"\n**Discounted Price:** **{discounted_price_formatted}** <:240pxCoins_detail:1428434758135975936>"
 
-                field_value += f"\n**Value in $:** ${price_to_usd(total_price_after_discount):.2f} <:Bitcoin:1416768698672349355>"
+                field_value += f"\n**Value in $:** ${price_to_usd(total_price_after_discount):.2f} <:Bitcoin:1428432416564838440>"
                 emoji = boss.get("emoji", "🦄")  # Emoji for the boss (default to 🔨 if not found)
                 embed.add_field(name=f"{item['name']}", value=f"{field_value}", inline=False)
 
@@ -751,98 +678,6 @@ def find_boss(boss_name_input, bosses):
 
     return None, None
 
-
-@bot.command()
-async def b(ctx, *, boss_name_with_multiplier: str):
-    try:
-        parts = boss_name_with_multiplier.rsplit(" ", 1)
-        boss_name = parts[0]
-        multiplier = int(parts[1]) if len(parts) > 1 and parts[1].isdigit() else 1
-
-        print(f"Command !b received. Boss name: {boss_name}, Multiplier: {multiplier}")
-
-        # Load all bosses
-        bosses = []
-        for json_file in JSON_FILES:
-            bosses.extend(load_bosses_from_file(json_file))
-
-        boss, matched_name = find_boss(boss_name, bosses)
-
-        if not boss:
-            await ctx.send(f"❌ Boss `{boss_name}` not found.")
-            return
-
-        discount_percent = discount_data3.get("percent", 0)
-        discount_multiplier = 1 - (discount_percent / 100)
-
-        embed = discord.Embed(
-            title=f"**{boss['name']}**",
-            description=boss.get("caption", ""),
-            color=discord.Color.from_rgb(139, 0, 0)
-        )
-
-        if discount_percent > 0:
-            embed.add_field(
-                name="**Applied Discount**",
-                value=f"```{discount_percent}%```",
-                inline=False
-            )
-        for item in boss["items"]:
-            if "image" in item and item["image"]:
-                embed.set_thumbnail(url=item["image"])
-                break
-
-
-        embed.set_footer(
-            text="Grinders Bot",
-            icon_url="https://media.discordapp.net/attachments/1208792947232079955/1376855814735921212/discord_with_services_avatar.gif?ex=6836d866&is=683586e6&hm=c818d597519f4b2e55c77aeae4affbf0397e12591743e1069582f605c125f80c&="  # Footer with thumbnail-style icon
-        )
-        embed.set_author(name="Boss Calculator", icon_url="https://media.discordapp.net/attachments/1208792947232079955/1376855814735921212/discord_with_services_avatar.gif?ex=6836d866&is=683586e6&hm=c818d597519f4b2e55c77aeae4affbf0397e12591743e1069582f605c125f80c&=")
-        for item in boss["items"]:
-            original_price_per_kill = item["price"]
-            total_price = original_price_per_kill * multiplier
-            discounted_price = total_price * discount_multiplier
-
-            original_price_formatted = format_price(total_price)
-            discounted_price_formatted = format_price(discounted_price)
-            total_usd = price_to_usd(discounted_price)
-
-            field_value = f"**Price:** {format_price(original_price_per_kill)} x {multiplier} = {original_price_formatted} <:240pxCoins_detail:1416768496020488303>"
-
-            if discount_percent > 0:
-                field_value += f"\n**Discounted Price:** {discounted_price_formatted} <:240pxCoins_detail:1416768496020488303>"
-
-            field_value += f"\n**Value in $:** ${total_usd:.2f} <:Bitcoin:1416768698672349355>"
-
-            emoji = boss.get("emoji", "🦄")
-            embed.add_field(name=f"{item['name']}", value=field_value, inline=False)
-
-        await ctx.send(embed=embed)
-
-        # Button View
-        button_view = discord.ui.View(timeout=None)
-        ticket_link = "https://discord.com/channels/1414948143250018307/1416764157298085888"
-        voucher_link = "https://www.sythe.org/threads/www-sythe-org-threads-cynx-osrs-service-vouch-thread/"
-
-        ticket_button = discord.ui.Button(
-            label="🎟️ Open a Ticket - Click Here",
-            url=ticket_link,
-            style=discord.ButtonStyle.url
-        )
-        voucher_button = discord.ui.Button(
-            label="Our Sythe Vouches",
-            url=voucher_link,
-            style=discord.ButtonStyle.url,
-            emoji=discord.PartialEmoji(name="sytheicon", id=1416769474618458193)
-        )
-
-        button_view.add_item(ticket_button)
-        button_view.add_item(voucher_button)
-        await ctx.send(view=button_view)
-
-    except Exception as e:
-        print(f"Error: {e}")
-        await ctx.send(f"An error occurred: {e}")
 
     
 @bot.event
