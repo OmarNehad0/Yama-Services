@@ -1,0 +1,556 @@
+[
+  {
+    "name": "Barbarian Assault",
+    "emoji": "<:Fighter_hat:1332628035018428456>",
+    "aliases": [
+      "barb",
+      "ba"
+    ],
+    "caption": "For Any Custom Question Create A Ticket.",
+    "items": [
+      {
+        "name": "Torso",
+        "price": 56000000
+      },
+      {
+        "name": "Skirt",
+        "price": 56000000
+      },
+      {
+        "name": "Hat",
+        "price": 46000000
+      },
+      {
+        "name": "Gloves",
+        "price": 23000000
+      },
+      {
+        "name": "Boots",
+        "price": 23000000
+      },
+      {
+        "name": "High gamble",
+        "price": 23000000
+      }
+    ]
+  },
+  {
+    "name": "Brimhaven Agility",
+    "emoji": "<:Brimhaven:1333063680170135582>",
+    "aliases": [
+      "brim",
+      "brimag"
+    ],
+    "items": [
+      {
+        "name": "Per ticket",
+        "price": 580000
+      },
+      {
+        "name": "Graceful outfit recolor",
+        "price": 145830000
+      }
+    ]
+  },
+  {
+    "name": "CastleWars",
+    "emoji": "<:Castle_wars_ticket:1332628074486956093>",
+    "aliases": [
+      "castlewars",
+      "cw","soulwar","sw"
+    ],
+    "items": [
+      {
+        "name": "Per ticket",
+        "price": 4200000
+      },
+      {
+        "name": "Soul War Point",
+        "price": 140000
+      }
+    ]
+  },
+  {
+    "name": "Mastering Mixology",
+    "aliases": [
+      "Mixology",
+      "Mastering"
+    ],
+    "emoji": "<:mixology:1333182226350735442>",
+    "caption": "81+ Herblore, Under 81 Herblore Upcharge Apply",
+    "items": [
+      {
+        "name": "Aldarium",
+        "price": 1446666
+      },
+      {
+        "name": "Alchemist's amulet",
+        "price": 130666666
+      },
+      {
+        "name": "the outfit 3 ",
+        "price": 168000000
+      },
+      {
+        "name": "Prescription Goggles",
+        "price": 154000000
+      },
+      {
+        "name": "Potion storage",
+        "price": 154000000
+      },
+      {
+        "name": "Reagent pouch",
+        "price": 247333333
+      },
+      {
+        "name": "Chugging barrel",
+        "price": 312666666
+      }
+    ]
+  },
+  {
+    "name": "Chompy Bird Kills",
+    "emoji": "<:Chompy_bird:1333064065005912126>",
+    "aliases": [
+      "chompy",
+      "chomp"
+    ],
+    "items": [
+      {
+        "name": "Per kill",
+        "price": 140000
+      }
+    ]
+  },
+  {
+    "name": "Giant's Foundry",
+    "emoji": "<:Colossal_blade:1333064331432038462>",
+    "aliases": [
+      "giants",
+      "gfoundry"
+    ],
+    "caption": "All prices are per point, and assumes bars are banked. 5% Extra if using metal items",
+    "items": [
+      {
+        "name": "Lvl 30 to 55 Smithing - 50% Iron + 50% Steel",
+        "price": 1633333
+      },
+      {
+        "name": "Lvl 55 to 70 Smithing - 50% Steel + 50% Mithril",
+        "price": 1866666
+      },
+
+      {
+        "name": "Lvl 70 to 85 Smithing - 50% Mithril + 50% Adamant",
+        "price": 2333333
+      },
+
+      {
+        "name": "Lvl 85 Smithing - 50% Adamant + 50% Rune",
+        "price": 2800000
+      }
+    ]
+  },
+  {
+    "name": "Guardian's of the Rift (Points)",
+    "emoji": "<:Abyssal_protector:1333064738611134655>",
+    "aliases": [
+      "gotr"
+    ],
+    "items": [
+      {
+        "name": "Lvl 35 to 44",
+        "price": 1773333
+      },
+      {
+        "name": "Lvl 44 to 54",
+        "price": 1773333
+      },
+      {
+        "name": "Lvl 54 to 65",
+        "price": 1493333
+      },
+      {
+        "name": "Lvl 65 to 77",
+        "price": 1493333
+      },
+      {
+        "name": "Lvl 77 to 99",
+        "price": 1166666
+      }
+    ]
+  },
+  {
+    "name": "Hallowed Sepulchre",
+    "emoji": "<:Hallowed_mark:1333065000033583115>",
+    "aliases": [
+      "sep",
+      "hw"
+    ],
+    "caption": "Prices per items",
+    "items": [
+      {
+        "name": "Level 5 chest",
+        "price": 7000000
+      },
+      {
+        "name": "Dark Graceful 82 Agility",
+        "price": 606666666
+      },
+      {
+        "name": "Dark Graceful 92 Agility",
+        "price": 466666666
+      },
+      {
+        "name": "Black acorn 82 Agility",
+        "price": 1012666666
+      },
+      {
+        "name": "Black acorn 92 Agility",
+        "price": 779333333
+      }
+    ]
+  },
+  {
+    "name": "Last Man Standing (LMS)",
+    "emoji": "<:LMS:1332628181684977707>",
+    "aliases": [
+      "lms"
+    ],
+    "caption": "Last Man Standing per points",
+    "items": [
+      {
+        "name": "Per point",
+        "price": 933333
+      },
+      {
+        "name": "Rune Pouch",
+        "price": 70000000
+      }
+    ]
+  },
+  {
+    "name": "Magic Arena 1 / 2",
+    "emoji": "<:Imbued_saradomin_cape:1332628270524530754>",
+    "aliases": [
+      "ma1",
+      "ma2"
+    ],
+    "caption": "200% extra for HCIM.",
+    "items": [
+      {
+        "name": "MA 1 - with 43+ pray",
+        "price": 5600000
+      },
+      {
+        "name": "MA 2 - one cape only",
+        "price": 24266666
+      },
+      {
+        "name": "Additional MA 2 Cape",
+        "price": 11200000
+      },
+      {
+        "name": "Spells unlocked",
+        "price": 21000000
+      }
+    ]
+  },
+  {
+    "name": "Magic Training Arena",
+    "emoji": "<:Bones_to_Peaches:1333066694616420435>",
+    "aliases": [
+      "mta"
+    ],
+    "items": [
+      {
+        "name": "Bones to Peaches Unlock",
+        "price": 70000000
+      },
+      {
+        "name": "Infinity Hat",
+        "price": 93333333
+      },
+      {
+        "name": "Infinity Top",
+        "price": 112000000
+      },
+      {
+        "name": "Infinity Bottom",
+        "price": 130666666
+      },
+      {
+        "name": "Infinity Gloves",
+        "price": 46666666
+      },
+      {
+        "name": "Infinity Boots",
+        "price": 32666666
+      },
+      {
+        "name": "Mage's Book",
+        "price": 149333333
+      },
+      {
+        "name": "Master Wand",
+        "price": 140000000
+      }
+    ]
+  },
+  {
+    "name": "Pest Control (PC)",
+    "emoji": "<:Elite_void_robe:1332628371099750411>",
+    "aliases": [
+      "pc",
+      "pestcontrol"
+    ],
+    "caption": "Prices below are per point",
+    "items": [
+      {
+        "name": "Low",
+        "price": 140000
+      },
+      {
+        "name": "Med",
+        "price": 116666
+      },
+      {
+        "name": "High",
+        "price": 93333
+      }
+    ]
+  },
+  {
+    "name": "Pyramid Plunder",
+    "emoji": "<:Pharaohs_sceptre:1333067752134676560>",
+    "aliases": [
+      "plunder",
+      "pyramid"
+    ],
+    "items": [
+      {
+        "name": "Any Chest",
+        "price": 158666
+      }
+    ]
+  },
+  {
+    "name": "Tithe Farm Items",
+    "emoji": "<:TitheFarm:1333068179282460764>",
+    "aliases": [
+      "Tithe farm",
+      "Tithe"
+    ],
+    "caption": "",
+    "items": [
+      {
+        "name": "Farming outfit",
+        "price": 100333333
+      },
+      {
+        "name": "Seed box",
+        "price": 63000000
+      },
+      {
+        "name": "Herb sack",
+        "price": 63000000
+      },
+      {
+        "name": "Gricoller's can",
+        "price": 50400000
+      }
+    ]
+  },
+  {
+    "name": "Warrior Guild",
+    "emoji": "<:Dragon_defender:1333068521545924729>",
+    "aliases": [
+      "ddef",
+      "tokens"
+    ],
+    "items": [
+      {
+        "name": "Defender With Tokens ",
+        "price": 46666666
+      },
+      {
+        "name": "Defender Without Tokens",
+        "price": 93333332
+      }
+    ]
+  },
+  {
+    "name": "Aerial Fishing",
+    "emoji" : "<:Fishing:1332624811293413386>",
+    "aliases": [
+      "aerial fishing","aerial"],
+    "items" : [
+      {
+        "name": "Pearl",
+        "price": 1700000
+      }
+    ]
+  },
+  {
+    "name": "Herbiboar",
+    "emoji" : "<:Herblore:1332625035503992943>",
+    "aliases": [
+      "herbi","herbiboar"],
+    "items" : [
+      {
+        "name": "herbiboar run",
+        "price": 270000
+      }
+    ]
+  },
+  {
+    "name": "Hunter Rumors",
+    "emoji" : "<:Hunter:1332625188289908808>",
+    "aliases": [
+      "hunter rumor","rumor"],
+    "items" : [
+      {
+        "name": "Hunter Rumors Run",
+        "price": 3000000
+      }
+    ]
+  },
+  {
+    "name": "Red/Black Chins",
+    "emoji" : "<:Red_chinchompa:1344648891294945290>",
+    "aliases": [
+      "chins","red chins","black chins"],
+    "items" : [
+      {
+        "name": "Red Chins With Above 80 Hunter",
+        "price": 52000
+      },
+      {
+        "name": "Red Chins With Below 80 Hunter",
+        "price": 69000
+      },
+      {
+        "name": "Red Chins No Private Area",
+        "price": 71000
+      },
+      {
+        "name": "Black Chins",
+        "price": 102000
+      }
+    ]
+  },
+  {
+    "name": "Buckets Of Sand",
+    "emoji" : "<:Bucket_of_sand:1344649501373235251>",
+    "aliases": [
+      "bucket of sand","bucket of sands","bucket"],
+    "items" : [
+      {
+        "name": "80+ Mining",
+        "price": 7500
+      },
+      {
+        "name": "Below 80 Mining",
+        "price": 9700
+      },
+      {
+        "name": "Below 60 Mining",
+        "price": 11200
+      }
+    ]
+  },
+  {
+    "name": "Buy From Blast Furnace",
+    "emoji" : "<:Mining:1332624760089346140>",
+    "aliases": [
+      "blast furnace","buy ore","bfurnace"],
+    "items" : [
+      {
+        "name": "Gold ore",
+        "price": 6500
+      },
+      {
+        "name": "Iron ore",
+        "price": 6500
+      },
+      {
+        "name": "Mithril ore",
+        "price": 6500
+      },
+      {
+        "name": "Coal ore",
+        "price": 6500
+      },
+      {
+        "name": "Coal With Coal Bag",
+        "price": 4300
+      }
+    ]
+  },
+  {
+    "name": "Minnows",
+    "emoji" : "<:Shark:1349138542390939668>",
+    "aliases": [
+      "im grinds","imgrind","minnows"],
+    "items" : [
+      {
+        "name": "82-90 Fishing",
+        "price": 30000
+      },
+      {
+        "name": "90-95 Fishing",
+        "price": 24000
+      },
+      {
+        "name": "95-99 Fishing",
+        "price": 21000
+      }
+    ]
+  },{
+    "name": "Plank With Butler",
+    "emoji" : "<:Plank:1349138844926214185>",
+    "aliases": [
+      "Plank"],
+    "items" : [
+      {
+        "name": "plank with butler",
+        "price": 25000
+      }
+    ]
+  },
+{
+    "name": "Molten Glass",
+    "emoji" : "<:Molten_glass:1349138988090527826>",
+    "aliases": [
+      "molten glass","molten"],
+    "items" : [
+      {
+        "name": "Making Glass Per Seaweed",
+        "price": 18000
+      },
+      {
+        "name": "Blowing Glass",
+        "price": 7000
+      }
+    ]
+  }, {
+    "name": "Tempross (Permites)",
+    "emoji": "<:Tempoross:1349139480191176704>",
+    "aliases": [
+      "tempross",
+      "permits"
+    ],
+    "caption": "Prices Are Per Point\n+10% if under level 50 fishing\n+10% upcharge if no humidify",
+    "items": [
+      {
+        "name": "Infernal Harpoon",
+        "price": 420000
+      },
+      {
+        "name": "Permits",
+        "price": 470000
+      }
+    ]
+  }
+]

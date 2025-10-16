@@ -1,0 +1,52 @@
+[
+    {
+      "name": "Gauntlet",
+      "aliases": [
+        "gauntlet"
+      ],
+      "caption": "+10% for each prayer missing [Piety,Rigour,Augury]",
+      "items": [
+        {
+          "name": "Normal  80+",
+          "price": 2500000,
+          "image" : "https://oldschool.runescape.wiki/images/thumb/Youngllef_%28follower%29.png/280px-Youngllef_%28follower%29.png?fc90e"
+        }
+      ],
+    "emoji" : "<:280pxCrystalline_Hunllef:1321170231888183326>"
+    },
+    {
+      "name": "Corrupted Gauntlet",
+      "aliases": [
+        "cg"
+      ],
+      "caption": "+10% for each prayer missing [Piety,Rigour,Augury]",
+      "items": [
+        {
+          "name": "Stats 99",
+          "price": 4600000,
+          "image" : "https://oldschool.runescape.wiki/images/thumb/Corrupted_Youngllef.png/1024px-Corrupted_Youngllef.png?fc90e"
+        },
+        {
+          "name": "Stats 90+",
+          "price": 5000000,
+          "image" : "https://oldschool.runescape.wiki/images/thumb/Corrupted_Youngllef.png/1024px-Corrupted_Youngllef.png?fc90e"
+        },
+        {
+          "name": "Stats 85+",
+          "price": 5500000,
+          "image" : "https://oldschool.runescape.wiki/images/thumb/Corrupted_Youngllef.png/1024px-Corrupted_Youngllef.png?fc90e"
+        },
+        {
+          "name": "Stats 80+",
+          "price": 5900000,
+          "image" : "https://oldschool.runescape.wiki/images/thumb/Corrupted_Youngllef.png/1024px-Corrupted_Youngllef.png?fc90e"
+        },
+        {
+          "name": "Stats 75+",
+          "price": 6400000,
+          "image" : "https://oldschool.runescape.wiki/images/thumb/Corrupted_Youngllef.png/1024px-Corrupted_Youngllef.png?fc90e"
+        }],
+     "emoji" : "<:280pxCorrupted_Hunllef:1222390344377696288>"
+    }
+     
+  ]
