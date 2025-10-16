@@ -281,7 +281,7 @@ payment_methods_with_emojis = {
     "USDT (Erc20) +1%" : ("0x78b61d855e48e7992a893345a6dd49bf1cda8fcf" , "<:TetherUSDTicon:1428433565305143529>"),
     "Binance to Binance & USDT +2%" : ("491415541", "<:1681906467binancelogotransparent:1428433162060566548>"),
     "LiteCoin +1%" :("LdbTAqF3brHb6TghNKVAToxoeX7xmzWHQn " ,"<:10752790:1428433732653678623>"),
-    "ETH (ERC20)" : ("0x78b61d855e48e7992a893345a6dd49bf1cda8fcf", "<:EthereumETHicon:1428433826169749525>")
+    "ETH (ERC20)" : ("0x78b61d855e48e7992a893345a6dd49bf1cda8fcf", "<:EthereumETHicon:1428433826169749525>")}
     
 
 # Command to display payment options
