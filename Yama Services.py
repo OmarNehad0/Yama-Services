@@ -1004,7 +1004,7 @@ async def run_skill_calculator(interaction, skill, level_start, level_end):
         f"**<:Unnamed_29:1428845272443654154>{method['title']}**\n"
         f"<:Unnamed_29:1428845272443654154> Requires level {method['req']} - {method['gpxp']}gp/xp\n"
         f"<:Bitcoin:1428432416564838440> **${(((XP_TABLE[level_end] - XP_TABLE[level_start]) * method['gpxp'] / 1_000_000) * discount_multiplier) * exchange_rate:,.2f}**"
-        f" │ <:gold:1428432122216497242> **{((XP_TABLE[level_end] - XP_TABLE[level_start]) * method['gpxp'] / 1_000_000) * discount_multiplier:,.2f}M**"
+        f" │ <:240pxCoins_detail:1428434758135975936> **{((XP_TABLE[level_end] - XP_TABLE[level_start]) * method['gpxp'] / 1_000_000) * discount_multiplier:,.2f}M**"
         for method in skill["methods"]
     ])
 
@@ -1039,7 +1039,7 @@ async def run_skill_calculator(interaction, skill, level_start, level_end):
         name="**__~Using the cheapest methods available~__**",
         value=(
             f"<:Bitcoin:1428432416564838440> **${total_usd_cost:,.2f}**\n"
-            f"<:gold:1428432122216497242> **{total_gp_cost:,.2f}M**"
+            f"<:240pxCoins_detail:1428434758135975936> **{total_gp_cost:,.2f}M**"
         ),
         inline=False,
     )
@@ -1053,6 +1053,7 @@ async def run_skill_calculator(interaction, skill, level_start, level_end):
         value=breakdown_text,
         inline=False,
     )
+
 
     embed.add_field(
         name="**__Alternatively, if you want to choose a specific method__**",
@@ -1088,7 +1089,7 @@ async def run_skill_calculator(interaction, skill, level_start, level_end):
     await interaction.response.send_message(embed=embed, view=button_view, ephemeral=True)
 
     # --- Log identical to original ---
-    log_channel = interaction.client.get_channel(1208792947232079955)
+    log_channel = interaction.client.get_channel(1428430067016405002)
     if log_channel:
         time_str = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         await log_channel.send(
