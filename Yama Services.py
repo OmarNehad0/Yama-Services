@@ -954,6 +954,7 @@ async def skills(ctx):
 
 
 async def run_skill_calculator(interaction, skill, level_start, level_end):
+    """Identical logic to original, now displaying both USD and M."""
     discount_percent = discount_data["percent"]
     exchange_rate = current_exchange_rate
 
@@ -962,6 +963,7 @@ async def run_skill_calculator(interaction, skill, level_start, level_end):
     total_usd_cost = 0
     current_level = level_start
 
+    # --- Original logic preserved ---
     while current_level < level_end:
         valid_methods = [m for m in skill["methods"] if m["req"] <= current_level]
         if not valid_methods:
@@ -996,7 +998,7 @@ async def run_skill_calculator(interaction, skill, level_start, level_end):
 
         current_level = target_level
 
-    # --- Build the "other methods" text ---
+    # --- Build additional methods text (same logic, just showing $ + M) ---
     discount_multiplier = 1 - (discount_percent / 100)
     additional_text = "\n".join([
         f"**<:Unnamed_29:1428845272443654154>{method['title']}**\n"
@@ -1006,7 +1008,7 @@ async def run_skill_calculator(interaction, skill, level_start, level_end):
         for method in skill["methods"]
     ])
 
-    # --- Split the text into 1024-character chunks (Discord field limit) ---
+    # --- Split text into 1024-char chunks (Discord limit) ---
     chunks = []
     chunk = ""
     for line in additional_text.split("\n"):
@@ -1017,12 +1019,13 @@ async def run_skill_calculator(interaction, skill, level_start, level_end):
     if chunk:
         chunks.append(chunk)
 
-    # --- Embed setup ---
+    # --- Embed setup (identical formatting as original) ---
     embed = discord.Embed(
         title=f"{skill['emoji']} {skill['name']} Calculator",
         description=f"Requires {XP_TABLE[level_end] - XP_TABLE[level_start]:,} XP",
         color=discord.Color.from_rgb(139, 0, 0),
     )
+
     embed.add_field(name="**__Start Level__**", value=f"**```{level_start}```**", inline=True)
     embed.add_field(name="**__End Level__**", value=f"**```{level_end}```**", inline=True)
     embed.add_field(name="**__Discount__**", value=f"**```{discount_percent}%```**", inline=True)
@@ -1031,7 +1034,7 @@ async def run_skill_calculator(interaction, skill, level_start, level_end):
     embed.set_footer(text="Cynx Staff", icon_url="https://media.discordapp.net/attachments/1208792947232079955/1376855814735921212/discord_with_services_avatar.gif")
     embed.set_author(name="Cynx Service", icon_url="https://media.discordapp.net/attachments/1208792947232079955/1376855814735921212/discord_with_services_avatar.gif")
 
-    # 🧮 Show total in both $ and M
+    # 🧮 Show total price in both formats
     embed.add_field(
         name="**__~Using the cheapest methods available~__**",
         value=(
@@ -1051,7 +1054,6 @@ async def run_skill_calculator(interaction, skill, level_start, level_end):
         inline=False,
     )
 
-    # Add all method options
     embed.add_field(
         name="**__Alternatively, if you want to choose a specific method__**",
         value=chunks[0],
@@ -1063,7 +1065,7 @@ async def run_skill_calculator(interaction, skill, level_start, level_end):
     if skill.get("caption"):
         embed.add_field(name="**Notes**", value=skill["caption"], inline=False)
 
-    # --- Buttons (Ticket + Vouches) ---
+    # --- Buttons identical to old setup ---
     button_view = View(timeout=None)
     ticket_link = "https://discord.com/channels/1426534299888254988/1426548817611980840"
     voucher_link = "https://www.sythe.org/threads/www-sythe-org-threads-cynx-osrs-service-vouch-thread/"
@@ -1084,6 +1086,19 @@ async def run_skill_calculator(interaction, skill, level_start, level_end):
     button_view.add_item(voucher_button)
 
     await interaction.response.send_message(embed=embed, view=button_view, ephemeral=True)
+
+    # --- Log identical to original ---
+    log_channel = interaction.client.get_channel(1208792947232079955)
+    if log_channel:
+        time_str = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        await log_channel.send(
+            f"🧾 **Skill Calculator Used**\n"
+            f"👤 User: {interaction.user.mention} (`{interaction.user.id}`)\n"
+            f"🧠 Skill: **{skill['name']}**\n"
+            f"📈 Levels: {level_start} ➜ {level_end}\n"
+            f"💰 Total: ${total_usd_cost:,.2f} / {total_gp_cost:,.2f}M\n"
+            f"🕒 Time: `{time_str}`"
+        )
 
 
 
