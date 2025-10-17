@@ -954,7 +954,7 @@ async def skills(ctx):
 
 
 async def run_skill_calculator(interaction, skill, level_start, level_end):
-    """Identical logic to original, now displaying both USD and M."""
+    """This is your original !s logic, adapted for modal use (ephemeral + logging)."""
     discount_percent = discount_data["percent"]
     exchange_rate = current_exchange_rate
 
@@ -963,7 +963,6 @@ async def run_skill_calculator(interaction, skill, level_start, level_end):
     total_usd_cost = 0
     current_level = level_start
 
-    # --- Original logic preserved ---
     while current_level < level_end:
         valid_methods = [m for m in skill["methods"] if m["req"] <= current_level]
         if not valid_methods:
@@ -1008,7 +1007,7 @@ async def run_skill_calculator(interaction, skill, level_start, level_end):
         for method in skill["methods"]
     ])
 
-    # --- Split text into 1024-char chunks (Discord limit) ---
+    # --- Split the text into 1024-character chunks ---
     chunks = []
     chunk = ""
     for line in additional_text.split("\n"):
@@ -1019,13 +1018,12 @@ async def run_skill_calculator(interaction, skill, level_start, level_end):
     if chunk:
         chunks.append(chunk)
 
-    # --- Embed setup (identical formatting as original) ---
+    # --- Embed setup ---
     embed = discord.Embed(
         title=f"{skill['emoji']} {skill['name']} Calculator",
         description=f"Requires {XP_TABLE[level_end] - XP_TABLE[level_start]:,} XP",
         color=discord.Color.from_rgb(139, 0, 0),
     )
-
     embed.add_field(name="**__Start Level__**", value=f"**```{level_start}```**", inline=True)
     embed.add_field(name="**__End Level__**", value=f"**```{level_end}```**", inline=True)
     embed.add_field(name="**__Discount__**", value=f"**```{discount_percent}%```**", inline=True)
@@ -1034,13 +1032,10 @@ async def run_skill_calculator(interaction, skill, level_start, level_end):
     embed.set_footer(text="Cynx Staff", icon_url="https://media.discordapp.net/attachments/1208792947232079955/1376855814735921212/discord_with_services_avatar.gif")
     embed.set_author(name="Cynx Service", icon_url="https://media.discordapp.net/attachments/1208792947232079955/1376855814735921212/discord_with_services_avatar.gif")
 
-    # 🧮 Show total price in both formats — now includes dominant method name
     embed.add_field(
         name=f"**__~Using the cheapest methods available~__**",
-        value=(
-            f"<:Bitcoin:1428432416564838440> **${total_usd_cost:,.2f}**\n"
-            f"<:240pxCoins_detail:1428434758135975936> **{total_gp_cost:,.2f}M**"
-        ),
+        value=f"<:bitcoinbtclogo:1210395515133362316> **${total_usd_cost:,.2f}**\n"
+        f"<:240pxCoins_detail:1428434758135975936> **{total_gp_cost:,.2f}M**",
         inline=False,
     )
 
@@ -1065,9 +1060,9 @@ async def run_skill_calculator(interaction, skill, level_start, level_end):
     if skill.get("caption"):
         embed.add_field(name="**Notes**", value=skill["caption"], inline=False)
 
-    # --- Buttons identical to old setup ---
+    # --- Create Buttons View ---
     button_view = View(timeout=None)
-    ticket_link = "https://discord.com/channels/1426534299888254988/1426548817611980840"
+    ticket_link = "https://discord.com/channels/1414948143250018307/1416764157298085888"
     voucher_link = "https://www.sythe.org/threads/www-sythe-org-threads-cynx-osrs-service-vouch-thread/"
 
     ticket_button = Button(
@@ -1079,13 +1074,15 @@ async def run_skill_calculator(interaction, skill, level_start, level_end):
         label="Our Sythe Vouches",
         url=voucher_link,
         style=ButtonStyle.url,
-        emoji=discord.PartialEmoji(name="sytheicon", id=1428430819042787369)
+        emoji=discord.PartialEmoji(name="sytheicon", id=1416769474618458193)
     )
 
     button_view.add_item(ticket_button)
     button_view.add_item(voucher_button)
 
+    # --- Send the Embed + Buttons (Ephemeral to User) ---
     await interaction.response.send_message(embed=embed, view=button_view, ephemeral=True)
+
 
     # --- Log identical to original ---
     log_channel = interaction.client.get_channel(1428430067016405002)
