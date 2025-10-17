@@ -883,166 +883,207 @@ def chunk_text(text, max_length=1024):
     chunks.append(text)  # Add the remaining text as the last chunk
     return chunks
 
-# Command to calculate skill costs
-@bot.command()
-async def s(ctx, skill_name: str, levels: str):
-    discount_percent = discount_data["percent"]  # Use the globally set discount
-    try:
-        # Parse level range
-        level_start, level_end = map(int, levels.split("-"))
-        if level_start < 1 or level_end > 99 or level_start >= level_end:
-            await ctx.send("Invalid level range. Use !s skill_name start-end with levels between 1-99.")
-            return
+# --- Buttons view: show all skills ---
+class SkillButton(Button):
+    def __init__(self, skill):
+        super().__init__(
+            label=skill["name"],
+            emoji=skill["emoji"],
+            style=discord.ButtonStyle.blurple,
+            custom_id=f"skill_{skill['name'].lower()}"
+        )
+        self.skill = skill
 
-        # Find the skill by name or alias
-        skill = None
-        for skill_data in skills_data:
-            if skill_name.lower() == skill_data["name"].lower() or skill_name.lower() in skill_data["aliases"]:
-                skill = skill_data
-                break
+    async def callback(self, interaction: discord.Interaction):
+        # When a skill is clicked, open modal to enter start & end levels
+        modal = LevelInputModal(self.skill)
+        await interaction.response.send_modal(modal)
 
-        if not skill:
-            await ctx.send(f"Error: Skill '{skill_name}' not found.")
-            return
 
-        # Fetch the dynamic exchange rate
-        global current_exchange_rate
-        exchange_rate = current_exchange_rate
+class LevelInputModal(Modal):
+    def __init__(self, skill):
+        # Ensure title fits Discord's limit (max 45 chars)
+        title_text = f"{skill['name']} Level Input"
+        if len(title_text) > 45:
+            title_text = title_text[:42] + "..."
 
-        # Calculate cheapest method breakdown
-        breakdown = []
-        total_gp_cost = 0
-        total_usd_cost = 0
-        current_level = level_start
+        super().__init__(title=title_text)
+        self.skill = skill
 
-        while current_level < level_end:
-            # Find the cheapest method available at the current level
-            valid_methods = [method for method in skill["methods"] if method["req"] <= current_level]
-            if not valid_methods:
-                await ctx.send(f"No valid methods available for level {current_level}.")
+        self.start_level = TextInput(label="Start Level", placeholder="1")
+        self.target_level = TextInput(label="Target Level", placeholder="99")
+
+        self.add_item(self.start_level)
+        self.add_item(self.target_level)
+
+    async def on_submit(self, interaction: discord.Interaction):
+        try:
+            level_start = int(self.start_level.value)
+            level_end = int(self.target_level.value)
+
+            if not (1 <= level_start < level_end <= 99):
+                await interaction.response.send_message(
+                    "⚠️ Invalid levels! Must be between 1–99.", ephemeral=True
+                )
                 return
 
-            cheapest_method = min(valid_methods, key=lambda m: m["gpxp"])
+            # Run your calculator logic
+            await run_skill_calculator(interaction, self.skill, level_start, level_end)
 
-            # Calculate the XP required to reach the next method or the target level
-            next_method_level = min(
-                (method["req"] for method in skill["methods"] if method["req"] > current_level),
-                default=level_end,
+        except ValueError:
+            await interaction.response.send_message(
+                "⚠️ Please enter valid numbers!", ephemeral=True
             )
-            target_level = min(next_method_level, level_end)
-            xp_to_next = XP_TABLE[target_level] - XP_TABLE[current_level]
 
-            discount_multiplier = 1 - (discount_percent / 100)
 
-            # Apply discount to each method
-            gp_cost = (xp_to_next * cheapest_method["gpxp"] / 1_000_000) * discount_multiplier
-            usd_cost = gp_cost * exchange_rate
+class SkillsView(View):
+    def __init__(self):
+        super().__init__(timeout=None)
+        for skill in skills_data:
+            self.add_item(SkillButton(skill))
 
-            # Calculate costs for this segment
-            total_gp_cost += gp_cost
-            total_usd_cost += usd_cost
 
-            # Add breakdown details
-            breakdown.append({
-                "title": cheapest_method["title"],
-                "start_level": current_level,
-                "end_level": target_level,
-                "gp_cost": gp_cost,
-                "usd_cost": usd_cost,
-                "gpxp": cheapest_method["gpxp"],
-            })
-            
-            # Update the current level
-            current_level = target_level
-        
-        # Calculate discount
+# --- Command to show skill buttons ---
+@bot.command()
+async def skills(ctx):
+    """Show all OSRS skills as clickable buttons"""
+    view = SkillsView()
+    await ctx.send("🧠 **Select a skill to calculate cost:**", view=view)
+
+
+async def run_skill_calculator(interaction, skill, level_start, level_end):
+    discount_percent = discount_data["percent"]
+    exchange_rate = current_exchange_rate
+
+    breakdown = []
+    total_gp_cost = 0
+    total_usd_cost = 0
+    current_level = level_start
+
+    while current_level < level_end:
+        valid_methods = [m for m in skill["methods"] if m["req"] <= current_level]
+        if not valid_methods:
+            await interaction.response.send_message(
+                f"No valid methods for level {current_level}.", ephemeral=True
+            )
+            return
+
+        cheapest_method = min(valid_methods, key=lambda m: m["gpxp"])
+        next_method_level = min(
+            (m["req"] for m in skill["methods"] if m["req"] > current_level),
+            default=level_end,
+        )
+        target_level = min(next_method_level, level_end)
+        xp_to_next = XP_TABLE[target_level] - XP_TABLE[current_level]
+
         discount_multiplier = 1 - (discount_percent / 100)
+        gp_cost = (xp_to_next * cheapest_method["gpxp"] / 1_000_000) * discount_multiplier
+        usd_cost = gp_cost * exchange_rate
 
-        # Full method calculations
-        additional_text = "\n".join([
-            f"**<:Unnamed_29:1416767980112576522>{method['title']}**\n <:Unnamed_29:1416767980112576522> Requires level {method['req']} - {method['gpxp']}gp/xp\n"
-            f"<:240pxCoins_detail:1416768496020488303> **{round(((XP_TABLE[level_end] - XP_TABLE[level_start]) * method['gpxp'] / 1_000_000) * discount_multiplier)}m**"
-            f"<:Bitcoin:1416768698672349355> **${(((XP_TABLE[level_end] - XP_TABLE[level_start]) * method['gpxp'] / 1_000_000) * discount_multiplier) * exchange_rate:,.2f}** \n"
-            for method in skill["methods"]
-        ])
+        total_gp_cost += gp_cost
+        total_usd_cost += usd_cost
 
-        # Chunk the text to ensure no field exceeds 1024 characters
-        chunks = chunk_text(additional_text)
+        breakdown.append({
+            "title": cheapest_method["title"],
+            "start_level": current_level,
+            "end_level": target_level,
+            "gp_cost": gp_cost,
+            "usd_cost": usd_cost,
+            "gpxp": cheapest_method["gpxp"],
+        })
 
-        # Embed setup
-        embed = discord.Embed(
-            title=f"{skill['emoji']} {skill['name']} Calculator",
-            description=f"Requires {XP_TABLE[level_end] - XP_TABLE[level_start]:,} XP",
-            color=discord.Color.from_rgb(139, 0, 0),
-        )
-        embed.add_field(name="**__Start Level__**", value=f"**```{level_start}```**", inline=True)
-        embed.add_field(name="**__End Level__**", value=f"**```{level_end}```**", inline=True)
-        embed.add_field(name="**__Discount__**", value=f"**```{discount_percent}%```**", inline=True)
+        current_level = target_level
 
-        embed.set_thumbnail(url="https://media.discordapp.net/attachments/1208792947232079955/1376855814735921212/discord_with_services_avatar.gif?ex=6836d866&is=683586e6&hm=c818d597519f4b2e55c77aeae4affbf0397e12591743e1069582f605c125f80c&=")
-        embed.set_footer(
-            text="Grinders Staff",
-            icon_url="https://media.discordapp.net/attachments/1208792947232079955/1376855814735921212/discord_with_services_avatar.gif?ex=6836d866&is=683586e6&hm=c818d597519f4b2e55c77aeae4affbf0397e12591743e1069582f605c125f80c&="
-        )
-        embed.set_author(name="Grinders Services", icon_url='https://media.discordapp.net/attachments/1208792947232079955/1376855814735921212/discord_with_services_avatar.gif?ex=6836d866&is=683586e6&hm=c818d597519f4b2e55c77aeae4affbf0397e12591743e1069582f605c125f80c&=')
-        # Add total cost
-        embed.add_field(
-            name=f"**__~Using the cheapest methods available~__**",
-            value=f"<:240pxCoins_detail:1416768496020488303> **{total_gp_cost:,.2f}M** " 
-                   f"<<:Bitcoin:1416768698672349355> **${total_usd_cost:,.2f}** ",
-            inline=False,
-        )
-        
+    # --- Build the "other methods" text ---
+    discount_multiplier = 1 - (discount_percent / 100)
+    additional_text = "\n".join([
+        f"**<:Unnamed_29:1428845272443654154>{method['title']}**\n"
+        f"<:Unnamed_29:1428845272443654154> Requires level {method['req']} - {method['gpxp']}gp/xp\n"
+        f"<:Bitcoin:1428432416564838440> **${(((XP_TABLE[level_end] - XP_TABLE[level_start]) * method['gpxp'] / 1_000_000) * discount_multiplier) * exchange_rate:,.2f}**"
+        f" │ <:gold:1428432122216497242> **{((XP_TABLE[level_end] - XP_TABLE[level_start]) * method['gpxp'] / 1_000_000) * discount_multiplier:,.2f}M**"
+        for method in skill["methods"]
+    ])
 
-        # Add breakdown of methods
-        breakdown_text = "\n".join([
-            f"{segment['title']} at level {segment['start_level']} "
-            for segment in breakdown
-        ])
-        embed.add_field(
-            name="**This will consist of the following methods:**",
-            value=breakdown_text,
-            inline=False,
-        )
+    # --- Split the text into 1024-character chunks (Discord field limit) ---
+    chunks = []
+    chunk = ""
+    for line in additional_text.split("\n"):
+        if len(chunk) + len(line) + 1 > 1024:
+            chunks.append(chunk)
+            chunk = ""
+        chunk += line + "\n"
+    if chunk:
+        chunks.append(chunk)
 
-        # Add each chunk as a separate field in the embed
-        embed.add_field(
-            name="**__Alternatively, if you want to choose a specific method__**",
-            value=chunks[0],
-            inline=False,
-        )
-        for chunk in chunks[1:]:
-            embed.add_field(
-                name="",
-                value=chunk,
-                inline=False,
-            )
-        # Add optional notes
-        if skill.get("caption"):
-            embed.add_field(
-                name="**Notes**",
-                value=skill["caption"],
-                inline=False,
-            )
-        # Send the embed
-        await ctx.send(embed=embed)
-        button_view = discord.ui.View(timeout=None)  # Persistent view
+    # --- Embed setup ---
+    embed = discord.Embed(
+        title=f"{skill['emoji']} {skill['name']} Calculator",
+        description=f"Requires {XP_TABLE[level_end] - XP_TABLE[level_start]:,} XP",
+        color=discord.Color.from_rgb(139, 0, 0),
+    )
+    embed.add_field(name="**__Start Level__**", value=f"**```{level_start}```**", inline=True)
+    embed.add_field(name="**__End Level__**", value=f"**```{level_end}```**", inline=True)
+    embed.add_field(name="**__Discount__**", value=f"**```{discount_percent}%```**", inline=True)
 
-        # Ticket button with emoji
-        ticket_link = "https://discord.com/channels/1414948143250018307/1416764157298085888"
-        voucher_link = "https://www.sythe.org/threads/www-sythe-org-threads-cynx-osrs-service-vouch-thread/"
-        ticket_button = discord.ui.Button(
+    embed.set_thumbnail(url="https://media.discordapp.net/attachments/1208792947232079955/1376855814735921212/discord_with_services_avatar.gif")
+    embed.set_footer(text="Cynx Staff", icon_url="https://media.discordapp.net/attachments/1208792947232079955/1376855814735921212/discord_with_services_avatar.gif")
+    embed.set_author(name="Cynx Service", icon_url="https://media.discordapp.net/attachments/1208792947232079955/1376855814735921212/discord_with_services_avatar.gif")
+
+    # 🧮 Show total in both $ and M
+    embed.add_field(
+        name="**__~Using the cheapest methods available~__**",
+        value=(
+            f"<:Bitcoin:1428432416564838440> **${total_usd_cost:,.2f}**\n"
+            f"<:gold:1428432122216497242> **{total_gp_cost:,.2f}M**"
+        ),
+        inline=False,
+    )
+
+    breakdown_text = "\n".join([
+        f"{segment['title']} at level {segment['start_level']}"
+        for segment in breakdown
+    ])
+    embed.add_field(
+        name="**This will consist of the following methods:**",
+        value=breakdown_text,
+        inline=False,
+    )
+
+    # Add all method options
+    embed.add_field(
+        name="**__Alternatively, if you want to choose a specific method__**",
+        value=chunks[0],
+        inline=False,
+    )
+    for chunk in chunks[1:]:
+        embed.add_field(name="‎", value=chunk, inline=False)
+
+    if skill.get("caption"):
+        embed.add_field(name="**Notes**", value=skill["caption"], inline=False)
+
+    # --- Buttons (Ticket + Vouches) ---
+    button_view = View(timeout=None)
+    ticket_link = "https://discord.com/channels/1426534299888254988/1426548817611980840"
+    voucher_link = "https://www.sythe.org/threads/www-sythe-org-threads-cynx-osrs-service-vouch-thread/"
+
+    ticket_button = Button(
         label="🎟️ Open a Ticket - Click Here",
         url=ticket_link,
-        style=discord.ButtonStyle.url
-        )
-        voucher_button = discord.ui.Button(label="Our Sythe Vouches",url=voucher_link,style=discord.ButtonStyle.url,emoji=discord.PartialEmoji(name="sytheicon", id=1416769474618458193))
-        button_view.add_item(ticket_button)
-        button_view.add_item(voucher_button)
-        await ctx.send(view=button_view)
-    except Exception as e:
-        await ctx.send(f"Error calculating skill: {e}")
-        
+        style=ButtonStyle.url
+    )
+    voucher_button = Button(
+        label="Our Sythe Vouches",
+        url=voucher_link,
+        style=ButtonStyle.url,
+        emoji=discord.PartialEmoji(name="sytheicon", id=1428430819042787369)
+    )
+
+    button_view.add_item(ticket_button)
+    button_view.add_item(voucher_button)
+
+    await interaction.response.send_message(embed=embed, view=button_view, ephemeral=True)
+
+
 
 
 
