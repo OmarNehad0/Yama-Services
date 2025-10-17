@@ -1034,9 +1034,10 @@ async def run_skill_calculator(interaction, skill, level_start, level_end):
     embed.set_footer(text="Cynx Staff", icon_url="https://media.discordapp.net/attachments/1208792947232079955/1376855814735921212/discord_with_services_avatar.gif")
     embed.set_author(name="Cynx Service", icon_url="https://media.discordapp.net/attachments/1208792947232079955/1376855814735921212/discord_with_services_avatar.gif")
 
-    # 🧮 Show total price in both formats — now includes best method name
+    # 🧮 Show total price in both formats — now includes dominant method name
+    best_method = max(breakdown, key=lambda b: b["gp_cost"])
     embed.add_field(
-        name=f"**__~Using {breakdown[0]['title']}~__**",  # ✅ Show method name instead of "cheapest methods"
+        name=f"**__~Using {best_method['title']}~__**",
         value=(
             f"<:Bitcoin:1428432416564838440> **${total_usd_cost:,.2f}**\n"
             f"<:240pxCoins_detail:1428434758135975936> **{total_gp_cost:,.2f}M**"
@@ -1090,7 +1091,7 @@ async def run_skill_calculator(interaction, skill, level_start, level_end):
     # --- Log identical to original ---
     log_channel = interaction.client.get_channel(1428430067016405002)
     if log_channel:
-        time_str = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        time_str = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         await log_channel.send(
             f"🧾 **Skill Calculator Used**\n"
             f"👤 User: {interaction.user.mention} (`{interaction.user.id}`)\n"
