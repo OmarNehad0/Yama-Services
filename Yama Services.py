@@ -1001,8 +1001,8 @@ async def run_skill_calculator(interaction, skill, level_start, level_end):
     # --- Build additional methods text (same logic, just showing $ + M) ---
     discount_multiplier = 1 - (discount_percent / 100)
     additional_text = "\n".join([
-        f"**<:Unnamed_29:1428845272443654154>{method['title']}**\n"
-        f"<:Unnamed_29:1428845272443654154> Requires level {method['req']} - {method['gpxp']}gp/xp\n"
+        f"**<:Stats_icon:1222385545343275128>{method['title']}**\n"
+        f"<:Stats_icon:1222385545343275128> Requires level {method['req']} - {method['gpxp']}gp/xp\n"
         f"<:Bitcoin:1428432416564838440> **${(((XP_TABLE[level_end] - XP_TABLE[level_start]) * method['gpxp'] / 1_000_000) * discount_multiplier) * exchange_rate:,.2f}**"
         f" │ <:240pxCoins_detail:1428434758135975936> **{((XP_TABLE[level_end] - XP_TABLE[level_start]) * method['gpxp'] / 1_000_000) * discount_multiplier:,.2f}M**"
         for method in skill["methods"]
@@ -1035,9 +1035,8 @@ async def run_skill_calculator(interaction, skill, level_start, level_end):
     embed.set_author(name="Cynx Service", icon_url="https://media.discordapp.net/attachments/1208792947232079955/1376855814735921212/discord_with_services_avatar.gif")
 
     # 🧮 Show total price in both formats — now includes dominant method name
-    best_method = max(breakdown, key=lambda b: b["gp_cost"])
     embed.add_field(
-        name=f"**__~Using {best_method['title']}~__**",
+        name=f"**__~Using the cheapest methods available~__**",
         value=(
             f"<:Bitcoin:1428432416564838440> **${total_usd_cost:,.2f}**\n"
             f"<:240pxCoins_detail:1428434758135975936> **{total_gp_cost:,.2f}M**"
