@@ -1090,7 +1090,7 @@ async def run_skill_calculator(interaction, skill, level_start, level_end):
     # --- Log identical to original ---
     log_channel = interaction.client.get_channel(1428430067016405002)
     if log_channel:
-        time_str = datetime..now().strftime("%Y-%m-%d %H:%M:%S")
+        time_str = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         await log_channel.send(
             f"🧾 **Skill Calculator Used**\n"
             f"👤 User: {interaction.user.mention} (`{interaction.user.id}`)\n"
