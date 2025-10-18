@@ -1287,7 +1287,7 @@ def update_wallet(user_id, field, value):
 @bot.tree.command(name="wallet", description="Check a user's wallet balance")
 async def wallet(interaction: discord.Interaction, user: discord.Member = None):
     # Define role IDs
-    self_only_roles {1427208699688259607}
+    self_only_roles {1427208699688259607},
     allowed_roles = {1427205455565815869, 1427206792537964596, 1427206367915016213}
 
     # Check if user has permission
