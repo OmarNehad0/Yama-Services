@@ -2116,7 +2116,7 @@ async def order_deletion(interaction: Interaction, order_id: int):
 @bot.tree.command(name="view_order", description="View details of an order")
 async def view_order(interaction: discord.Interaction, order_id: int):
     # Required role IDs
-    allowed_roles = {1208792946401615900, 1208792946430836736, 1211406868480532571}
+    allowed_roles = {1427205455565815869, 1427206792537964596, 1427206367915016213}
 
     # Check if user has at least one of the required roles
     if not any(role.id in allowed_roles for role in interaction.user.roles):
@@ -2143,7 +2143,7 @@ async def view_order(interaction: discord.Interaction, order_id: int):
 
     embed = discord.Embed(title="📦 Order Details", color=discord.Color.from_rgb(139, 0, 0))
     embed.add_field(name="📊 Status", value=status, inline=False)
-    embed.set_author(name="Grinders System", icon_url="https://media.discordapp.net/attachments/1208792947232079955/1376855814735921212/discord_with_services_avatar.gif?ex=6836d866&is=683586e6&hm=c818d597519f4b2e55c77aeae4affbf0397e12591743e1069582f605c125f80c&=")
+    embed.set_author(name="Yama System", icon_url="https://media.discordapp.net/attachments/1208792947232079955/1376855814735921212/discord_with_services_avatar.gif?ex=6836d866&is=683586e6&hm=c818d597519f4b2e55c77aeae4affbf0397e12591743e1069582f605c125f80c&=")
     embed.add_field(name="👷 Worker", value=f"<@{worker_id}>" if isinstance(worker_id, int) else worker_id, inline=False)
     embed.add_field(name="📌 Customer", value=f"<@{customer_id}>" if isinstance(customer_id, int) else customer_id, inline=False)
     embed.add_field(name="🎟️ Holder", value=f"<@{holder_id}>" if isinstance(holder_id, int) else holder_id, inline=False)
