@@ -1157,7 +1157,7 @@ async def on_message(message: discord.Message):
     await bot.process_commands(message)  # Ensure commands still work
 
     # Replace with your actual Dink channel ID
-    DINK_CHANNEL_ID = 1416771003681607730
+    DINK_CHANNEL_ID = 1429013195367911435
 
     if message.channel.id != DINK_CHANNEL_ID:
         return
@@ -1206,14 +1206,14 @@ client = MongoClient(mongo_uri)
 db = client['MongoDB']  # Replace with the name of your database
 
 # Access collections (equivalent to Firestore collections)
-wallets_collection = db['wallets-grinders']
-orders_collection = db['orders-grinders']
-counters_collection = db["order_counters-grinders"]  # New collection to track order ID
+wallets_collection = db['wallets-yama']
+orders_collection = db['orders-yama']
+counters_collection = db["order_counters-yama"]  # New collection to track order ID
 
 # The fixed orders posting channel
-ORDERS_CHANNEL_ID = 1416771302554992700
+ORDERS_CHANNEL_ID = 1427198874078154822
 # Allowed roles for commands
-ALLOWED_ROLES = {1414948197142495283, 1415051454489825331}
+ALLOWED_ROLES = {1427205455565815869, 1427206792537964596, 1427206367915016213}
 
 def has_permission(user: discord.Member):
     return any(role.id in ALLOWED_ROLES for role in user.roles)
@@ -1221,7 +1221,7 @@ def has_permission(user: discord.Member):
 async def log_command(interaction: discord.Interaction, command_name: str, details: str):
     # Mapping of servers to their respective log channels
     LOG_CHANNELS = {
-        1414948143250018307: 1416754787566747710  # Server 1 → Log Channel 1
+        1426534299888254988: 1429030395495579680  # Server 1 → Log Channel 1
     }
 
     for guild_id, channel_id in LOG_CHANNELS.items():
@@ -1287,8 +1287,8 @@ def update_wallet(user_id, field, value):
 @bot.tree.command(name="wallet", description="Check a user's wallet balance")
 async def wallet(interaction: discord.Interaction, user: discord.Member = None):
     # Define role IDs
-    self_only_roles = {1414948143250018307, 1416772007089016986} 
-    allowed_roles = {1414948197142495283, 1415051454489825331}
+    self_only_roles {1427208699688259607}
+    allowed_roles = {1427205455565815869, 1427206792537964596, 1427206367915016213}
 
     # Check if user has permission
     user_roles = {role.id for role in interaction.user.roles}
@@ -1381,19 +1381,19 @@ async def check_and_assign_roles(user: discord.Member, spent_value: int, client)
     Sends a congrats message in the announcement channel.
     """
     role_milestones = {
-        1: 1212554296294514768,  # 1M+
-        4000: 1210262407994413176,  # 4M+
-        5000: 1210262187638132806,  # 5M+
-        7000: 1210090197845282908,  # 7M+
-        9000: 1210088939919118336,  # 9M+
-        14000: 1209962980179968010  # 14M+
+        2000: 1429042499531440208,  # 1M+
+        5000: 1429042669102825583,  # 4M+
+        7000: 1429042742062743562,  # 5M+
+        10000: 1429042988767510560,  # 7M+
+        15000: 1429043052197969934,  # 9M+
+        20000: 1429043118229028944 # 14M+
     }
 
     # Fetch the correct channel
-    congrats_channel = client.get_channel(1427563029679050795)  # Ensure it's the correct ID
+    congrats_channel = client.get_channel(1429031269051924530)  # Ensure it's the correct ID
     if congrats_channel is None:
         try:
-            congrats_channel = await client.fetch_channel(1210687108457701468)  
+            congrats_channel = await client.fetch_channel(1429031269051924530)  
             print(f"[DEBUG] Successfully fetched channel: {congrats_channel.name} ({congrats_channel.id})")
         except discord.NotFound:
             print("[ERROR] Channel not found in API!")
@@ -1627,7 +1627,7 @@ class OrderButton(View):
             return
 
         # ✅ Send application notification and store the message object
-        bot_spam_channel = bot.get_channel(1427439073538343155)
+        bot_spam_channel = bot.get_channel(1429031269051924530)
         if bot_spam_channel:
             embed = discord.Embed(title="📌 Job Application Received", color=discord.Color.from_rgb(139, 0, 0))
             embed.add_field(name="👷 Applicant", value=interaction.user.mention, inline=True)
@@ -1793,7 +1793,7 @@ async def post(interaction: discord.Interaction, customer: discord.Member, value
     post_channel_id = interaction.channel.id  # Store the channel where /post was used
 
     # Define role IDs
-    role1_id = 1208792946401615901
+    role1_id = 1427208346771001426
     role2_id = 1208792946401615902
 
     # Check if roles exist in the guild
@@ -1845,6 +1845,16 @@ async def post(interaction: discord.Interaction, customer: discord.Member, value
             "description": description,
             "posted_by": interaction.user.id  # ✅ store who used /post
         })
+
+        # Give customer role automatically
+        customer_role_id = 1429051114137059449
+        customer_role = discord.utils.get(interaction.guild.roles, id=customer_role_id)
+        if customer_role:
+            try:
+                await customer.add_roles(customer_role, reason="Customer made a post order")
+                print(f"Gave {customer} the customer role.")
+            except Exception as e:
+                print(f"Failed to give customer role to {customer}: {e}")
 
         confirmation_embed = embed.copy()
         confirmation_embed.title = "Order Posted"
@@ -1908,6 +1918,15 @@ async def set_order(interaction: Interaction, customer: discord.Member, value: i
         "image": image, # Store image in database
         "posted_by": interaction.user.id  # ✅ store who used /post
     })
+    # Give customer role automatically
+    customer_role_id = 1429051114137059449
+    customer_role = discord.utils.get(interaction.guild.roles, id=customer_role_id)
+    if customer_role:
+        try:
+            await customer.add_roles(customer_role, reason="Customer had an order set")
+            print(f"Gave {customer} the customer role.")
+        except Exception as e:
+            print(f"Failed to give customer role to {customer}: {e}")
 
     await interaction.response.send_message(f"Order set with Worker {worker.mention}!", ephemeral=True)
     await log_command(interaction, "Order Set", f"Customer: {customer.mention} (`{customer.id}`)\nWorker: {worker.mention} (`{worker.id}`)\nValue: {value:,}M\nDeposit Required: {deposit_required:,}M\nHolder: {holder.mention} (`{holder.id}`)\nDescription: {description}")
