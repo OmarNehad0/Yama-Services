@@ -1937,7 +1937,6 @@ async def set_order(interaction: Interaction, customer: discord.Member, value: i
             print(f"Permissions granted to {worker.name} in {original_channel.name}.")
         except Exception as e:
             print(f"Failed to set permissions for {worker.name} in {original_channel.name}: {e}")
-# /complete command
 @bot.tree.command(name="complete", description="Mark an order as completed.")
 async def complete(interaction: Interaction, order_id: int):
     if not has_permission(interaction.user):
@@ -1953,17 +1952,35 @@ async def complete(interaction: Interaction, order_id: int):
         await interaction.response.send_message("⚠️ This order has already been marked as completed.", ephemeral=True)
         return
 
-    # Extract customer ID and worker ID
     customer_id = str(order["customer"])
     worker_id = str(order["worker"])
     
-    # Transfer funds
     update_wallet(str(order["customer"]), "spent", order["value"])
-    
     total_value = order["value"]
-    worker_payment = round(total_value * 0.8, 1)
-    commission_value = round(total_value * 0.175, 1)
-    helper_payment = round(total_value * 0.025, 1)
+
+    guild = interaction.guild
+    worker = guild.get_member(int(worker_id))
+    
+    # Default commission logic
+    commission_percent = 20
+    helper_percent = 3
+    worker_percent = 80  # default
+
+    # Role-based commission logic
+    if worker:
+        # role 1427206367915016213 or 1427206367915016213 (same role id repeated?)
+        if any(role.id == 1427206367915016213 for role in worker.roles):
+            commission_percent = 15
+            worker_percent = 85
+        # role 1427206792537964596 -> 10%
+        elif any(role.id == 1427206792537964596 for role in worker.roles):
+            commission_percent = 10
+            worker_percent = 90
+
+    # Final calculations
+    commission_value = round(total_value * (commission_percent / 100) - total_value * (helper_percent / 100), 1)
+    helper_payment = round(total_value * (helper_percent / 100), 1)
+    worker_payment = round(total_value * (worker_percent / 100), 1)
 
     update_wallet(str(order["worker"]), "wallet", float(worker_payment))
     update_wallet("server", "commission", float(commission_value))
@@ -1971,22 +1988,20 @@ async def complete(interaction: Interaction, order_id: int):
 
     orders_collection.update_one({"_id": order_id}, {"$set": {"status": "completed"}})
 
-    # Get the Discord user for role checks
-    guild = interaction.guild
-    customer = guild.get_member(int(customer_id))  # Fetch customer from Discord server
-
+    # get customer for role checks
+    customer = guild.get_member(int(customer_id))
     if customer:
-        spent_value = order["value"]  # Assuming "value" represents the amount spent
+        spent_value = order["value"]
         await check_and_assign_roles(customer, spent_value, interaction.client)
     else:
         print(f"[ERROR] Customer {customer_id} not found in the Discord server.")
 
-    # Notify the original channel
+    # same embed logic (unchanged)
     original_channel = bot.get_channel(order["original_channel_id"])
     if original_channel:
         embed = Embed(title="✅ Order Completed", color=discord.Color.from_rgb(139, 0, 0))
-        embed.set_thumbnail(url="https://media.discordapp.net/attachments/1208792947232079955/1376855814735921212/discord_with_services_avatar.gif?ex=6836d866&is=683586e6&hm=c818d597519f4b2e55c77aeae4affbf0397e12591743e1069582f605c125f80c&=")
-        embed.set_author(name="Grinders System", icon_url="https://media.discordapp.net/attachments/1208792947232079955/1376855814735921212/discord_with_services_avatar.gif?ex=6836d866&is=683586e6&hm=c818d597519f4b2e55c77aeae4affbf0397e12591743e1069582f605c125f80c&=")
+        embed.set_thumbnail(url="https://media.discordapp.net/attachments/1208792947232079955/1376855814735921212/discord_with_services_avatar.gif")
+        embed.set_author(name="Yama System", icon_url="https://media.discordapp.net/attachments/1208792947232079955/1376855814735921212/discord_with_services_avatar.gif")
         embed.add_field(name="📕 Description", value=order.get("description", "No description provided."), inline=False)
         embed.add_field(name="👷 Worker", value=f"<@{order['worker']}>", inline=True)
         embed.add_field(name="📌 Customer", value=f"<@{order['customer']}>", inline=True)
@@ -1994,11 +2009,11 @@ async def complete(interaction: Interaction, order_id: int):
         embed.add_field(name="👷‍♂️ Worker Payment", value=f"**```{worker_payment}M```**", inline=True)
         embed.add_field(name="📦 Server Commission", value=f"**```{commission_value}M```**", inline=True)
         embed.add_field(name="📬 Helper Reward", value=f"**```{helper_payment}M```**", inline=True)
-        embed.set_image(url="https://media.discordapp.net/attachments/985890908027367474/1258798457318019153/Cynx_banner.gif?ex=67bf2b6b&is=67bdd9eb&hm=ac2c065a9b39c3526624f939f4af2b1457abb29bfb8d56a6f2ab3eafdb2bb467&=")
-        embed.set_footer(text=f"📜 Order ID: {order_id}", icon_url="https://media.discordapp.net/attachments/1208792947232079955/1376855814735921212/discord_with_services_avatar.gif?ex=6836d866&is=683586e6&hm=c818d597519f4b2e55c77aeae4affbf0397e12591743e1069582f605c125f80c&=")
+        embed.set_image(url="https://media.discordapp.net/attachments/985890908027367474/1258798457318019153/Cynx_banner.gif")
+        embed.set_footer(text=f"📜 Order ID: {order_id}", icon_url="https://media.discordapp.net/attachments/1208792947232079955/1376855814735921212/discord_with_services_avatar.gif")
         await original_channel.send(embed=embed)
-    
-    # NEW: security embed (small, loud, mentions customer inside)
+
+        # unchanged security embed
         security = Embed(
             title="🔒 Security Reminder",
             description=(
@@ -2010,45 +2025,43 @@ async def complete(interaction: Interaction, order_id: int):
             ),
             color=discord.Color.gold()
         )
-        security.set_thumbnail(url="https://media.discordapp.net/attachments/1208792947232079955/1376855814735921212/discord_with_services_avatar.gif?ex=6836d866&is=683586e6&hm=c818d597519f4b2e55c77aeae4affbf0397e12591743e1069582f605c125f80c&=")                 # same image as thumbnail
-        security.set_author(name="Grinders System", icon_url="https://media.discordapp.net/attachments/1208792947232079955/1376855814735921212/discord_with_services_avatar.gif?ex=6836d866&is=683586e6&hm=c818d597519f4b2e55c77aeae4affbf0397e12591743e1069582f605c125f80c&=")  # author icon = thumb
-        security.set_footer(text="Grinders System • Please confirm once done", icon_url="https://media.discordapp.net/attachments/1208792947232079955/1376855814735921212/discord_with_services_avatar.gif?ex=6836d866&is=683586e6&hm=c818d597519f4b2e55c77aeae4affbf0397e12591743e1069582f605c125f80c&=")  # footer icon = thumb
+        security.set_thumbnail(url="https://media.discordapp.net/attachments/1208792947232079955/1376855814735921212/discord_with_services_avatar.gif")
+        security.set_author(name="Yama System", icon_url="https://media.discordapp.net/attachments/1208792947232079955/1376855814735921212/discord_with_services_avatar.gif")
+        security.set_footer(text="Yama System • Please confirm once done", icon_url="https://media.discordapp.net/attachments/1208792947232079955/1376855814735921212/discord_with_services_avatar.gif")
         security.add_field(
             name="⚠️ Action Required",
             value="**This is for your safety. Please confirm here once changed.**",
             inline=False
         )
-        # Mention in message content too to nudge notification, while still included IN the embed:
         await original_channel.send(content=f"<@{customer_id}>", embed=security)
-    
-    # DM the worker
-    worker = bot.get_user(order["worker"])
-    if worker:
+
+    # DM worker embed (unchanged)
+    worker_user = bot.get_user(order["worker"])
+    if worker_user:
         dm_embed = Embed(title="✅ Order Completed", color=discord.Color.from_rgb(139, 0, 0))
-        dm_embed.set_thumbnail(url="https://media.discordapp.net/attachments/1208792947232079955/1376855814735921212/discord_with_services_avatar.gif?ex=6836d866&is=683586e6&hm=c818d597519f4b2e55c77aeae4affbf0397e12591743e1069582f605c125f80c&=")
-        dm_embed.set_author(name="Grinders System", icon_url="https://media.discordapp.net/attachments/1208792947232079955/1376855814735921212/discord_with_services_avatar.gif?ex=6836d866&is=683586e6&hm=c818d597519f4b2e55c77aeae4affbf0397e12591743e1069582f605c125f80c&=")
+        dm_embed.set_thumbnail(url="https://media.discordapp.net/attachments/1208792947232079955/1376855814735921212/discord_with_services_avatar.gif")
+        dm_embed.set_author(name="Yama System", icon_url="https://media.discordapp.net/attachments/1208792947232079955/1376855814735921212/discord_with_services_avatar.gif")
         dm_embed.add_field(name="📕 Description", value=order.get("description", "No description provided."), inline=False)
         dm_embed.add_field(name="💰 Value", value=f"**```{order['value']}M```**", inline=True)
         dm_embed.add_field(name="👷‍♂️ Your Payment", value=f"**```{worker_payment}M```**", inline=True)
         dm_embed.set_image(url="https://media.discordapp.net/attachments/985890908027367474/1258798457318019153/Cynx_banner.gif")
-        dm_embed.set_footer(text=f"📜 Order ID: {order_id}", icon_url="https://media.discordapp.net/attachments/1208792947232079955/1376855814735921212/discord_with_services_avatar.gif?ex=6836d866&is=683586e6&hm=c818d597519f4b2e55c77aeae4affbf0397e12591743e1069582f605c125f80c&=")
+        dm_embed.set_footer(text=f"📜 Order ID: {order_id}", icon_url="https://media.discordapp.net/attachments/1208792947232079955/1376855814735921212/discord_with_services_avatar.gif")
         try:
-            await worker.send(embed=dm_embed)
+            await worker_user.send(embed=dm_embed)
         except discord.Forbidden:
-            print(f"[WARNING] Could not DM worker {worker.id}. DMs may be closed.")
+            print(f"[WARNING] Could not DM worker {worker_user.id}. DMs may be closed.")
 
-    # Notify the helper in a specific channel
+    # helper channel summary (unchanged)
     helper_id = str(order.get("posted_by", interaction.user.id))
-    helper_channel = bot.get_channel(1427403309475434649)
-
+    helper_channel = bot.get_channel(1429057734967296121)
     if helper_channel:
         helper_embed = Embed(title="🎯 Helper Commission Summary", color=discord.Color.gold())
         helper_embed.set_thumbnail(url="https://media.discordapp.net/attachments/1208792947232079955/1376855814735921212/discord_with_services_avatar.gif")
-        helper_embed.set_author(name="Grinders System", icon_url="https://media.discordapp.net/attachments/1208792947232079955/1376855814735921212/discord_with_services_avatar.gif")
+        helper_embed.set_author(name="Yama System", icon_url="https://media.discordapp.net/attachments/1208792947232079955/1376855814735921212/discord_with_services_avatar.gif")
         helper_embed.add_field(name="📜 Order ID", value=f"`{order_id}`", inline=True)
         helper_embed.add_field(name="💰 Order Value", value=f"**```{order['value']}M```**", inline=True)
         helper_embed.add_field(name="🎁 Your Share", value=f"**```{helper_payment}M```**", inline=True)
-        helper_embed.set_footer(text=f"Grinders System", icon_url="https://media.discordapp.net/attachments/1208792947232079955/1376855814735921212/discord_with_services_avatar.gif")
+        helper_embed.set_footer(text=f"Yama System", icon_url="https://media.discordapp.net/attachments/1208792947232079955/1376855814735921212/discord_with_services_avatar.gif")
         try:
             await helper_channel.send(f"<@{helper_id}>", embed=helper_embed)
         except Exception as e:
@@ -2062,6 +2075,7 @@ async def complete(interaction: Interaction, order_id: int):
         f"Value: {total_value}M\nWorker Payment: {worker_payment}M\n"
         f"Server Commission: {commission_value}M\nHelper Reward: {helper_payment}M"
      ))
+
 
 # 📌 /order_deletion command
 @bot.tree.command(name="order_deletion", description="Delete an order.")
