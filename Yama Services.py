@@ -1875,6 +1875,7 @@ async def post(interaction: discord.Interaction, customer: discord.Member, value
     image="Optional image URL to show at the bottom of the embed"
 )
 async def set_order(interaction: Interaction, customer: discord.Member, value: int, deposit_required: int, holder: discord.Member, description: str, worker: discord.Member, image: str = None):
+    await interaction.response.defer(ephemeral=True)
     if not has_permission(interaction.user):
         await interaction.response.send_message("❌ You don't have permission to use this command.", ephemeral=True)
         return
@@ -1928,7 +1929,7 @@ async def set_order(interaction: Interaction, customer: discord.Member, value: i
         except Exception as e:
             print(f"Failed to give customer role to {customer}: {e}")
 
-    await interaction.response.send_message(f"Order set with Worker {worker.mention}!", ephemeral=True)
+    await interaction.followup.send(f"Order set with Worker {worker.mention}!", ephemeral=True)
     await log_command(interaction, "Order Set", f"Customer: {customer.mention} (`{customer.id}`)\nWorker: {worker.mention} (`{worker.id}`)\nValue: {value:,}M\nDeposit Required: {deposit_required:,}M\nHolder: {holder.mention} (`{holder.id}`)\nDescription: {description}")
 
     if original_channel:
