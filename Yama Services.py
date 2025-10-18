@@ -1939,6 +1939,7 @@ async def set_order(interaction: Interaction, customer: discord.Member, value: i
             print(f"Failed to set permissions for {worker.name} in {original_channel.name}: {e}")
 @bot.tree.command(name="complete", description="Mark an order as completed.")
 async def complete(interaction: Interaction, order_id: int):
+    await interaction.response.defer(ephemeral=True)
     if not has_permission(interaction.user):
         await interaction.response.send_message("❌ You don't have permission to use this command.", ephemeral=True)
         return
@@ -2067,7 +2068,7 @@ async def complete(interaction: Interaction, order_id: int):
         except Exception as e:
             print(f"[ERROR] Failed to send helper embed: {e}")
 
-    await interaction.response.send_message("Order marked as completed!", ephemeral=True)
+    await interaction.followup.send("✅ Order marked as completed!", ephemeral=True)
     await log_command(interaction, "Order Completed", (
         f"Order ID: {order_id}\nMarked by: {interaction.user.mention} (`{interaction.user.id}`)\n"
         f"Worker: <@{order['worker']}> (`{order['worker']}`)\n"
