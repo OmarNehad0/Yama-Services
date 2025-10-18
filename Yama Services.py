@@ -1627,7 +1627,7 @@ class OrderButton(View):
             return
 
         # ✅ Send application notification and store the message object
-        bot_spam_channel = bot.get_channel(1429031269051924530)
+        bot_spam_channel = bot.get_channel(1429042357700919296)
         if bot_spam_channel:
             embed = discord.Embed(title="📌 Job Application Received", color=discord.Color.from_rgb(139, 0, 0))
             embed.add_field(name="👷 Applicant", value=interaction.user.mention, inline=True)
@@ -1694,7 +1694,7 @@ class ApplicationView(View):
             # ✅ Corrected embed with actual order details
             embed = discord.Embed(title="👷‍♂️ Order Claimed", color=discord.Color.from_rgb(139, 0, 0))
             embed.set_thumbnail(url="https://media.discordapp.net/attachments/1208792947232079955/1376855814735921212/discord_with_services_avatar.gif?ex=6836d866&is=683586e6&hm=c818d597519f4b2e55c77aeae4affbf0397e12591743e1069582f605c125f80c&=")
-            embed.set_author(name="✅ Grinders System ✅", icon_url="https://media.discordapp.net/attachments/1208792947232079955/1376855814735921212/discord_with_services_avatar.gif?ex=6836d866&is=683586e6&hm=c818d597519f4b2e55c77aeae4affbf0397e12591743e1069582f605c125f80c&=")
+            embed.set_author(name="✅ Yama System ✅", icon_url="https://media.discordapp.net/attachments/1208792947232079955/1376855814735921212/discord_with_services_avatar.gif?ex=6836d866&is=683586e6&hm=c818d597519f4b2e55c77aeae4affbf0397e12591743e1069582f605c125f80c&=")
             embed.add_field(name="📕 Description", value=description, inline=False)
             embed.add_field(name="👷 Worker", value=f"<@{self.applicant_id}>", inline=True)
             embed.add_field(name="📌 Customer", value=f"<@{self.customer_id}>", inline=True)
@@ -1702,7 +1702,7 @@ class ApplicationView(View):
             embed.add_field(name="💰 Order Value", value=f"**```{value}M```**", inline=True)
             embed.add_field(name="🆔 Order ID", value=self.order_id, inline=True)
             embed.set_image(url="https://media.discordapp.net/attachments/985890908027367474/1258798457318019153/Cynx_banner.gif")
-            embed.set_footer(text="Grinders System", icon_url="https://media.discordapp.net/attachments/1208792947232079955/1376855814735921212/discord_with_services_avatar.gif?ex=6836d866&is=683586e6&hm=c818d597519f4b2e55c77aeae4affbf0397e12591743e1069582f605c125f80c&=")
+            embed.set_footer(text="Yama System", icon_url="https://media.discordapp.net/attachments/1208792947232079955/1376855814735921212/discord_with_services_avatar.gif?ex=6836d866&is=683586e6&hm=c818d597519f4b2e55c77aeae4affbf0397e12591743e1069582f605c125f80c&=")
             sent_message = await original_channel.send(embed=embed)
             await sent_message.pin()
 
@@ -1998,8 +1998,11 @@ async def complete(interaction: Interaction, order_id: int):
         print(f"[ERROR] Customer {customer_id} not found in the Discord server.")
 
     # same embed logic (unchanged)
+    # Completed order message will go to this fixed channel
+    completed_channel = bot.get_channel(1429066328022454272)
     original_channel = bot.get_channel(order["original_channel_id"])
-    if original_channel:
+
+    if completed_channel:
         embed = Embed(title="✅ Order Completed", color=discord.Color.from_rgb(139, 0, 0))
         embed.set_thumbnail(url="https://media.discordapp.net/attachments/1208792947232079955/1376855814735921212/discord_with_services_avatar.gif")
         embed.set_author(name="Yama System", icon_url="https://media.discordapp.net/attachments/1208792947232079955/1376855814735921212/discord_with_services_avatar.gif")
@@ -2012,9 +2015,11 @@ async def complete(interaction: Interaction, order_id: int):
         embed.add_field(name="📬 Helper Reward", value=f"**```{helper_payment}M```**", inline=True)
         embed.set_image(url="https://media.discordapp.net/attachments/985890908027367474/1258798457318019153/Cynx_banner.gif")
         embed.set_footer(text=f"📜 Order ID: {order_id}", icon_url="https://media.discordapp.net/attachments/1208792947232079955/1376855814735921212/discord_with_services_avatar.gif")
-        await original_channel.send(embed=embed)
+    
+        await completed_channel.send(embed=embed)
 
-        # unchanged security embed
+    # Send the security embed in the original order channel (unchanged)
+    if original_channel:
         security = Embed(
             title="🔒 Security Reminder",
             description=(
