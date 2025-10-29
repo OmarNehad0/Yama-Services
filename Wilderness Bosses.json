@@ -1,105 +1,251 @@
 [
     {
         "name": "Calisto / Artio",
-        "aliases": ["artio", "calisto"],
+        "aliases": [
+            "artio",
+            "calisto"
+        ],
         "caption": "You keep all loot.\nPrices may vary depending on stats and gear.",
         "items": [
             {
                 "name": "Callisto",
-                "price": 1800000,
-                "image" : "https://oldschool.runescape.wiki/images/Callisto.png?bfba7"
-         },{
-                "name": "Artio",
+                "price": 1750000,
+                "image": "https://oldschool.runescape.wiki/images/Callisto.png?bfba7"
+            },
+            {
+                "name": "Artio - Webweaver",
                 "price": 1000000,
-                "image" : "https://oldschool.runescape.wiki/images/Callisto.png?bfba7"}],
-                "emoji" : "<:290pxArtio:1321176454725107772>"
-
+                "image": "https://oldschool.runescape.wiki/images/Callisto.png?bfba7"
+            },
+            {
+                "name": "Artio - Bowfa",
+                "price": 1150000,
+                "image": "https://oldschool.runescape.wiki/images/Callisto.png?bfba7"
+            }
+        ],
+        "emoji": "<:290pxArtio:1321176454725107772>"
     },
-
-
-     {
+    {
         "name": "Chaos Fanatic",
-        "aliases": ["chaos"],
+        "aliases": [
+            "chaos"
+        ],
         "caption": "You keep all loot.\nPrices may vary depending on stats and gear.",
         "items": [
             {
-                "name": "Chaos Fanatic",
-                "price": 800000,
-                "image" : "https://oldschool.runescape.wiki/images/thumb/Chaos_Fanatic.png/180px-Chaos_Fanatic.png?8871d"
+                "name": "Chaos Fanatic - Craw's Bow",
+                "price": 400000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Chaos_Fanatic.png/180px-Chaos_Fanatic.png?8871d"
             },
             {
-                "name": "Chaos Elemental",
-                "price": 700000,
-                "image" : "https://oldschool.runescape.wiki/images/thumb/Chaos_Fanatic.png/180px-Chaos_Fanatic.png?8871d"
+                "name": "Chaos Fanatic - Bowfa",
+                "price": 450000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Chaos_Fanatic.png/180px-Chaos_Fanatic.png?8871d"
             },
             {
-                "name": "Crazy Archaeologist",
+                "name": "Chaos Fanatic - Blowpipe",
+                "price": 5000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Chaos_Fanatic.png/180px-Chaos_Fanatic.png?8871d"
+            }
+        ],
+        "emoji": "<:250pxChaos_Elemental:1321176443757006910>"
+    },
+    {
+        "name": "Chaos Elemental",
+        "aliases": [
+            "chaos"
+        ],
+        "caption": "You keep all loot.\nPrices may vary depending on stats and gear.",
+        "items": [
+            {
+                "name": "Chaos Fanatic - Webwaver",
+                "price": 500000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Chaos_Fanatic.png/180px-Chaos_Fanatic.png?8871d"
+            },
+            {
+                "name": "Chaos Fanatic - Bowfa",
                 "price": 600000,
-                "image" : "https://oldschool.runescape.wiki/images/thumb/Chaos_Fanatic.png/180px-Chaos_Fanatic.png?8871d"
-            }    ], 
-                "emoji" : "<:250pxChaos_Elemental:1321176443757006910>"
-     },
+                "image": "https://oldschool.runescape.wiki/images/thumb/Chaos_Fanatic.png/180px-Chaos_Fanatic.png?8871d"
+            }
+        ],
+        "emoji": "<:250pxChaos_Elemental:1321176443757006910>"
+    },
+    {
+        "name": "Crazy Archaeologist",
+        "aliases": [
+            "crazyarch"
+        ],
+        "caption": "You keep all loot.\nPrices may vary depending on stats and gear.",
+        "items": [
+            {
+                "name": "Crazy Archaeologist - Trident",
+                "price": 400000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Chaos_Fanatic.png/180px-Chaos_Fanatic.png?8871d"
+            },
+            {
+                "name": "Crazy Archaeologist - Iban's staff",
+                "price": 450000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Chaos_Fanatic.png/180px-Chaos_Fanatic.png?8871d"
+            }
+        ]
+    },
     {
         "name": "Venenatis / Spindel",
-        "aliases": ["venenatis","spindel","ven"],
+        "aliases": [
+            "venenatis",
+            "spindel",
+            "ven"
+        ],
         "caption": "You keep all loot.\nPrices may vary depending on stats and gear.",
         "items": [
             {
                 "name": "Venenatis",
-                "price": 1500000,
-                "image" : "https://oldschool.runescape.wiki/images/thumb/Venenatis.png/280px-Venenatis.png?13693"
+                "price": 1750000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Venenatis.png/280px-Venenatis.png?13693"
             },
             {
-                "name": "Spindel",
-                "price": 1000000,
-                "image" : "https://oldschool.runescape.wiki/images/thumb/Venenatis.png/280px-Venenatis.png?13693"
-            }    ],
-                "emoji" : "<:280pxVenenatis:1321176451277393940>"
-     },
-     {
+                "name": "Spindel - Viggora",
+                "price": 950000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Venenatis.png/280px-Venenatis.png?13693"
+            },
+            {
+                "name": "Spindel - Hasta",
+                "price": 1150000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Venenatis.png/280px-Venenatis.png?13693"
+            },
+            {
+                "name": "Spindel - Zombie Axe",
+                "price": 1350000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Venenatis.png/280px-Venenatis.png?13693"
+            }
+        ],
+        "emoji": "<:280pxVenenatis:1321176451277393940>"
+    },
+    {
         "name": "Vet'ion / Calvar'ion",
-        "aliases": ["vet'ion","cal","calvar'ion"],
+        "aliases": [
+            "vet'ion",
+            "cal",
+            "calvar'ion"
+        ],
         "caption": "You keep all loot.\nPrices may vary depending on stats and gear.",
         "items": [
             {
                 "name": "Vet'ion",
-                "price": 1500000,
-                "image" : "https://oldschool.runescape.wiki/images/thumb/Calvar%27ion.png/180px-Calvar%27ion.png?6268f"
+                "price": 1600000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Calvar%27ion.png/180px-Calvar%27ion.png?6268f"
             },
             {
-                "name": "Calvar'ion",
-                "price": 1000000,
-                "image" : "https://oldschool.runescape.wiki/images/thumb/Calvar%27ion.png/180px-Calvar%27ion.png?6268f"
-            }    ],
-                "emoji" : "<:180pxVetion:1321176441236357161>"
-     },
-     {
+                "name": "Calvar'ion - Viggora",
+                "price": 800000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Calvar%27ion.png/180px-Calvar%27ion.png?6268f"
+            },
+            {
+                "name": "Calvar'ion - Hasta",
+                "price": 1200000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Calvar%27ion.png/180px-Calvar%27ion.png?6268f"
+            },
+            {
+                "name": "Calvar'ion - Zombie Axe",
+                "price": 1300000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Calvar%27ion.png/180px-Calvar%27ion.png?6268f"
+            }
+        ],
+        "emoji": "<:180pxVetion:1321176441236357161>"
+    },
+    {
         "name": "Scorpia",
-        "aliases": ["scorpia"],
+        "aliases": [
+            "scorpia"
+        ],
         "caption": "You keep all loot.\nPrices may vary depending on stats and gear.",
         "items": [
             {
                 "name": "Scorpia",
-                "price": 800000,
-                "image" : "https://oldschool.runescape.wiki/images/thumb/Scorpion.png/130px-Scorpion.png?79d06"
-            }    ],
-                 "emoji" : "<:130pxScorpion:1321176437406830725>"
-     },
-     {
+                "price": 500000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Scorpion.png/130px-Scorpion.png?79d06"
+            }
+        ],
+        "emoji": "<:130pxScorpion:1321176437406830725>"
+    },
+    {
         "name": "King Black Dragon",
-        "aliases": ["kbd"],
+        "aliases": [
+            "kbd"
+        ],
         "caption": "You keep all loot.\nPrices may vary depending on stats and gear.",
         "items": [
             {
-                "name": "King Black Dragon (KBD) - Normal Gear",
-                "price": 600000,
-                "image" : "https://oldschool.runescape.wiki/images/thumb/King_Black_Dragon_%28Christmas%29.png/290px-King_Black_Dragon_%28Christmas%29.png?a4b99"
+                "name": "King Black Dragon (KBD) - T-Bow",
+                "price": 500000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/King_Black_Dragon_%28Christmas%29.png/290px-King_Black_Dragon_%28Christmas%29.png?a4b99"
             },
             {
-                "name": "King Black Dragon (KBD) - w/Dragon Hunter Items",
-                "price": 350000,
-                "image" : "https://oldschool.runescape.wiki/images/thumb/King_Black_Dragon_%28Christmas%29.png/290px-King_Black_Dragon_%28Christmas%29.png?a4b99"
-            }     ],
-                 "emoji" : "<:290pxKing_Black_Dragon_Christmas:1321229053214068808>"
-     }
+                "name": "King Black Dragon (KBD) - DHL/DHCB",
+                "price": 700000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/King_Black_Dragon_%28Christmas%29.png/290px-King_Black_Dragon_%28Christmas%29.png?a4b99"
+            }
+        ],
+        "emoji": "<:290pxKing_Black_Dragon_Christmas:1321229053214068808>"
+    },
+    {
+        "name": "Revenant Caves",
+        "aliases": [
+            "revs"
+        ],
+        "caption": "You keep all loot.\nPrices may vary depending on stats and gear.",
+        "items": [
+            {
+                "name": "Revenant goblin",
+                "price": 80000,
+                "image": "https://oldschool.runescape.wiki/w/Revenant_goblin#/media/File:Revenant_goblin.png"
+            },
+            {
+                "name": "Revenant pyrefiend",
+                "price": 150000,
+                "image": "hhttps://oldschool.runescape.wiki/w/Revenant_pyrefiend#/media/File:Revenant_pyrefiend.png"
+            },
+            {
+                "name": "Revenant hobgoblin",
+                "price": 185000,
+                "image": "https://oldschool.runescape.wiki/w/Revenant_hobgoblin#/media/File:Revenant_hobgoblin.png"
+            },
+            {
+                "name": "Revenant cyclops ",
+                "price": 200000,
+                "image": "https://oldschool.runescape.wiki/w/Revenant_cyclops#/media/File:Revenant_cyclops.png"
+            },
+            {
+                "name": "Revenant hellhound",
+                "price": 225000,
+                "image": "https://oldschool.runescape.wiki/w/Revenant_hellhound#/media/File:Revenant_hellhound.png"
+            },
+            {
+                "name": "Revenant demon",
+                "price": 275000,
+                "image": "https://oldschool.runescape.wiki/w/Revenant_demon#/media/File:Revenant_demon.png"
+            },
+            {
+                "name": "Revenant ork",
+                "price": 300000,
+                "image": "https://oldschool.runescape.wiki/w/Revenant_ork#/media/File:Revenant_ork.png"
+            },
+            {
+                "name": "Revenant dark beast",
+                "price": 450000,
+                "image": "https://oldschool.runescape.wiki/w/Revenant_dark_beast#/media/File:Revenant_dark_beast.png"
+            },
+            {
+                "name": "Revenant knight",
+                "price": 600000,
+                "image": "https://oldschool.runescape.wiki/w/Revenant_knight#/media/File:Revenant_knight.png"
+            },
+            {
+                "name": "Revenant dragon",
+                "price": 900000,
+                "image": "https://oldschool.runescape.wiki/w/Revenant_dragon#/media/File:Revenant_dragon.png"
+            }
+        ]
+    }
 ]
+
