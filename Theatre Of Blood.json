@@ -1,43 +1,116 @@
 [
     {
-      "name": "Theatre of Blood - Login",
-      "caption" : "You keep all loot. \nPrices may vary depending on stats and gear",
-      "aliases": [
-        "tob",
-        "theatre of blood"
-      ],
-      "items": [
-        {
-          "name": "Login - With Scythe",
-          "price": 17000000,
-          "image" : "https://oldschool.runescape.wiki/images/thumb/Lil%27_Zik.png/1024px-Lil%27_Zik.png?5a023"
-        },
-        {
-          "name": "Login - With Whip",
-          "price": 20000000,
-          "image" : "https://oldschool.runescape.wiki/images/thumb/Lil%27_Zik.png/1024px-Lil%27_Zik.png?5a023"
-        }
-      ],
-         "emoji" : "<:800pxLil_Zik:1208821122620071978>"
+        "name": "Normal Mode - Boosting",
+        "caption": "You keep all loot. \nPrices may vary depending on stats and gear",
+        "aliases": [
+            "tob",
+            "theatre of blood"
+        ],
+        "items": [
+            {
+                "name": "Boosting  [2 + 1]",
+                "price": 15000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Lil%27_Zik.png/1024px-Lil%27_Zik.png?5a023"
+            },
+            {
+                "name": "Boosting  [3 + 1]",
+                "price": 25000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Lil%27_Zik.png/1024px-Lil%27_Zik.png?5a023"
+            },
+            {
+                "name": "Voice Teaching - [3 + 1]",
+                "price": 32000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Lil%27_Zik.png/1024px-Lil%27_Zik.png?5a023"
+            },
+            {
+                "name": "Stamina Run [2 + 1]",
+                "price": 9000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Lil%27_Zik.png/1024px-Lil%27_Zik.png?5a023"
+            },
+            {
+                "name": "Entry Mode - [1 + 1]",
+                "price": 12000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Lil%27_Zik.png/1024px-Lil%27_Zik.png?5a023"
+            }
+        ],
+        "emoji": "<:800pxLil_Zik:1208821122620071978>"
     },
     {
-      "name": "Theatre of Blood - Modes",
-      "caption" : "You keep all loot. \nPrices may vary depending on stats and gear",
-      "aliases": [
-        "hmt","hardmode tob","hm tob","hmtob"
-      ],
-      "items": [
-        {
-          "name": "Hard Mode (Login) - With Scythe",
-          "price": 25000000,
-          "image" : "https://oldschool.runescape.wiki/images/thumb/Lil%27_Zik.png/1024px-Lil%27_Zik.png?5a023"
-        },
-        {
-          "name": "Hard Mode (Login) - Without Scythe",
-          "price": 35000000,
-          "image" : "https://oldschool.runescape.wiki/images/thumb/Lil%27_Zik.png/1024px-Lil%27_Zik.png?5a023"
-        }
-      ],
-         "emoji" : "<:800pxLil_Zik:1208821122620071978>"
+        "name": "Normal Mode - Login",
+        "caption": "You keep all loot. \nPrices may vary depending on stats and gear",
+        "aliases": [
+            "tob",
+            "theatre of blood"
+        ],
+        "items": [
+            {
+                "name": "Scythe - With Max Gear",
+                "price": 12000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Lil%27_Zik.png/1024px-Lil%27_Zik.png?5a023"
+            },
+            {
+                "name": "Whip / Blade - With Decent Gear",
+                "price": 17000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Lil%27_Zik.png/1024px-Lil%27_Zik.png?5a023"
+            }
+        ],
+        "emoji": "<:800pxLil_Zik:1208821122620071978>"
+    },
+    {
+        "name": "Hard Mode - Boosting",
+        "caption": "You keep all loot. \nPrices may vary depending on stats and gear",
+        "aliases": [
+            "hmt",
+            "hardmode tob",
+            "hm tob",
+            "hmtob"
+        ],
+        "items": [
+            {
+                "name": "Scythe - With Max Gear [3 + 1]",
+                "price": 22000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Lil%27_Zik.png/1024px-Lil%27_Zik.png?5a023"
+            },
+            {
+                "name": "Blade / Tent Whip  [3 + 1]",
+                "price": 28000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Lil%27_Zik.png/1024px-Lil%27_Zik.png?5a023"
+            },
+            {
+                "name": "Pure / Zerk [3 + 1]",
+                "price": 30000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Lil%27_Zik.png/1024px-Lil%27_Zik.png?5a023"
+            },
+            {
+                "name": "Voice Teaching",
+                "price": 45000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Lil%27_Zik.png/1024px-Lil%27_Zik.png?5a023"
+            }
+        ],
+        "emoji": "<:800pxLil_Zik:1208821122620071978>"
+    },
+    {
+        "name": "THard Mode - Login",
+        "caption": "You keep all loot. \nPrices may vary depending on stats and gear",
+        "aliases": [
+            "hmt",
+            "hardmode tob",
+            "hm tob",
+            "hmtob"
+        ],
+        "items": [
+            {
+                "name": "Scythe - With Max Gear",
+                "price": 16000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Lil%27_Zik.png/1024px-Lil%27_Zik.png?5a023"
+            },
+            {
+                "name": "Tent Whip / Blade",
+                "price": 30000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Lil%27_Zik.png/1024px-Lil%27_Zik.png?5a023"
+            }
+        ],
+        "emoji": "<:800pxLil_Zik:1208821122620071978>"
     }
-  ]
+]
+
