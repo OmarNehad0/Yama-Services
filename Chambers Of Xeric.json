@@ -1,62 +1,133 @@
 [
     {
-        "name": "COX - Trio",
-        "aliases": [
-            "coxtrio"
+        "name" : "COX Boosting",
+        "aliases" : [
+        "cox boosting"
         ],
-        "caption": "You keep all loot.\nPrices may vary depending on stats and gear",
-        "items": [
+        "caption" :"You keep all loot.",
+        "items" : [
             {
-                "name": "Trio",
-                "price": 12000000,
-                "image": "https://oldschool.runescape.wiki/images/thumb/Great_Olm_%28Christmas%29.png/800px-Great_Olm_%28Christmas%29.png?48b39"
-            }
-        ],
-        "emoji" : "<:1068621254879346698:1231636672475566090>"
-    },
-    {
-        "name": "COX - Challenge Mode - CM",
-        "aliases": [
-            "coxcm"
-        ],
-        "caption": "You keep all loot.\nPrices may vary depending on stats and gear",
-        "items": [
-            {
-                "name": "Challenge Mode - Mass",
-                "price": 20000000,
-                "image": "https://oldschool.runescape.wiki/images/thumb/Great_Olm_%28Christmas%29.png/800px-Great_Olm_%28Christmas%29.png?48b39"
+                "name": "Trio (2 + 1)",
+                "price": 14000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Great_Olm.png/300px-Great_Olm.png?f1081"
             },
             {
-                "name": "Challenge Mode - 3-5",
-                "price": 25000000,
-                "image": "https://oldschool.runescape.wiki/images/thumb/Great_Olm_%28Christmas%29.png/800px-Great_Olm_%28Christmas%29.png?48b39"
+                "name": "Teaching (3 + 1)",
+                "price": 28000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Great_Olm.png/300px-Great_Olm.png?f1081"
+            },
+            {
+                "name": "Full Leach",
+                "price": 16000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Great_Olm.png/300px-Great_Olm.png?f1081"
             }
         ],
         "emoji" : "<:1068621254879346698:1231636672475566090>"
     },
     {
-        "name": "COX Solo",
+        "name" : "CM Boosting",
+        "aliases" : [
+        "cm boosting"
+        ],
+        "caption" :"You keep all loot.",
+        "items" : [
+            {
+                "name": "Trio (2 + 1)",
+                "price": 28000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Great_Olm.png/300px-Great_Olm.png?f1081"
+            },
+            {
+                "name": "Teaching (3 + 1)",
+                "price": 40000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Great_Olm.png/300px-Great_Olm.png?f1081"
+            },
+            {
+                "name": "Full Leach",
+                "price": 36000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Great_Olm.png/300px-Great_Olm.png?f1081"
+            }
+        ],
+        "emoji" : "<:1068621254879346698:1231636672475566090>"
+    },
+    {
+        "name": "COX Login - Team",
+        "aliases": [
+            "coxlogin"
+        ],
+        "caption": "You keep all loot.\nPrices may vary depending on stats and gear",
+        "items": [
+            {
+                "name": "Small Team - Avg Gear",
+                "price": 15000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Great_Olm.png/300px-Great_Olm.png?f1081"
+            },
+                        {
+                "name": "Mass - Avg Gear",
+                "price": 10000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Great_Olm.png/300px-Great_Olm.png?f1081"
+            }
+        ],
+        "emoji" : "<:1068621254879346698:1231636672475566090>"
+    },
+    {
+        "name": "COX Login Solo",
         "aliases": [
             "coxsolo"
         ],
         "caption": "You keep all loot.\nPrices may vary depending on stats and gear",
         "items": [
             {
-                "name": "Twisted Bow (TBow)",
+                "name": "T-Bow with Max Gear ",
                 "price": 10000000,
-                "image": "https://oldschool.runescape.wiki/images/thumb/Great_Olm_%28Christmas%29.png/800px-Great_Olm_%28Christmas%29.png?48b39"
+                "image": "https://oldschool.runescape.wiki/images/thumb/Great_Olm.png/300px-Great_Olm.png?f1081"
             },
             {
-                "name": "Bow of Faerdhinen (Bowfa)",
-                "price": 12000000,
-                "image": "https://oldschool.runescape.wiki/images/thumb/Great_Olm_%28Christmas%29.png/800px-Great_Olm_%28Christmas%29.png?48b39"
+                "name": " Bowfa with max gear ",
+                "price": 13000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Great_Olm.png/300px-Great_Olm.png?f1081"
             },
             {
-                "name": "Tentacle Whip/Toxic Blowpipe (BP)",
-                "price": 15000000,
-                "image": "https://oldschool.runescape.wiki/images/thumb/Great_Olm_%28Christmas%29.png/800px-Great_Olm_%28Christmas%29.png?48b39"
+                "name": " Bowfa with Lance ",
+                "price": 14000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Great_Olm.png/300px-Great_Olm.png?f1081"
+            },
+            {
+                "name": "Bowfa with Tentacle Whip",
+                "price": 16000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Great_Olm.png/300px-Great_Olm.png?f1081"
+            }
+        ],
+        "emoji" : "<:1068621254879346698:1231636672475566090>"
+    },
+    {
+        "name": "COX - Challenge Mode - Login",
+        "aliases": [
+            "coxcm"
+        ],
+        "caption": "You keep all loot.\nPrices may vary depending on stats and gear",
+        "items": [
+            {
+                "name": "T-Bow with Max Gear - Solo",
+                "price": 25000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Great_Olm.png/300px-Great_Olm.png?f1081"
+            },
+            {
+                "name": "Bowfa with Max Gear - Solo",
+                "price": 30000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Great_Olm.png/300px-Great_Olm.png?f1081"
+            },
+            {
+                "name": "T-Bow with Max Gear - Team",
+                "price": 20000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Great_Olm.png/300px-Great_Olm.png?f1081"
+            },
+            {
+                "name": "Bowfa with Max Gear - Team",
+                "price": 26000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Great_Olm.png/300px-Great_Olm.png?f1081"
             }
         ],
         "emoji" : "<:1068621254879346698:1231636672475566090>"
     }
+    
 ]
