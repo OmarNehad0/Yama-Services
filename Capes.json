@@ -1,0 +1,88 @@
+[
+        {
+        "name": "Infernal Cape",
+        "aliases": ["inf", "infernal cape", "infernal"],
+        "caption" : "Prices may vary depending on stats and gear\n+10% if no BP.\n+10% if no Rig & Aug\n+10% if no Kodai\nParsec Upcharge Cost +40%",
+        "items": [
+            {
+                "name": "Twisted Bow (Tbow)",
+                "price": 225000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Infernal_cape_concept_4.gif/57px-Infernal_cape_concept_4.gif?9aa4d"
+            },
+            {
+                "name": "Bow of Faerdhinen (Bowfa)",
+                "price": 260000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Infernal_cape_concept_4.gif/57px-Infernal_cape_concept_4.gif?9aa4d"
+            },
+            {
+                "name": "Armadyl Crossbow (ACB)",
+                "price": 300000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Infernal_cape_concept_4.gif/57px-Infernal_cape_concept_4.gif?9aa4d"
+            }
+        ],
+                "emoji" : "<a:infernalclowerfile:1275123207707426816>"
+    },
+    {
+        "name": "Firecape",
+        "aliases": ["fc"],
+        "caption": "Prices may vary depending on stats and gear\nFor IM Accounts or specific gear & stats create a ticket for quote  ",
+        "items": [
+            {
+                "name": "Main (95+ Range with T-Bow/BP & Rigour)",
+                "price": 18000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Fire_cape_detail.png/800px-Fire_cape_detail.png?f1d08"
+            },
+            {
+                "name": "Zerker (95+ Range with T-Bow/BP & Rigour)",
+                "price": 25000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Fire_cape_detail.png/800px-Fire_cape_detail.png?f1d08"
+            },
+            {
+                "name": "Pure (95+ Range with T-Bow/BP & Rigour)",
+                "price": 40000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Fire_cape_detail.png/800px-Fire_cape_detail.png?f1d08"
+            }
+        ],
+                "emoji" : "<:150pxFire_cape_detail:1321173086183100539>"
+    },
+    {
+        "name" : "Mage Arena II Capes",
+        "aliases": ["ma2"],
+        "caption": "Prices may vary depending on stats and gear\nRequiers 90+ combat stats & 80+ prayer ",
+        "items" : [
+            {
+                "name": "Mage Arena I",
+                "price": 10000000,
+                "image": "https://oldschool.runescape.wiki/w/Imbued_saradomin_max_cape#/media/File:Imbued_saradomin_max_cape_detail.png"
+            },
+                {
+                "name": "Staves Activation",
+                "price": 15000000,
+                "image": "https://oldschool.runescape.wiki/w/Imbued_saradomin_max_cape#/media/File:Imbued_saradomin_max_cape_detail.png"
+            },
+            {
+                "name": "Mage Arena II",
+                "price": 25000000,
+                "image": "https://oldschool.runescape.wiki/w/Imbued_saradomin_max_cape#/media/File:Imbued_saradomin_max_cape_detail.png"
+            }
+        ]
+    },
+    {
+        "name": "6 Jad Challenge",
+        "aliases": ["sixjad", "6jad", "vijad", "jad6", "jadsix"],
+        "caption" : " Prices may vary depending on stats and gear \nParsec Upcharge Cost +40%",
+        "items": [
+            {
+                "name": "Twisted Bow (Tbow)",
+                "price": 100000000,
+                "image" : "https://oldschool.runescape.wiki/images/thumb/JalTok-Jad.png/280px-JalTok-Jad.png?7e369"
+            },
+            {
+                "name": "Toxic Blowpipe (BP)",
+                "price": 150000000,
+                "image" : "https://oldschool.runescape.wiki/images/thumb/JalTok-Jad.png/280px-JalTok-Jad.png?7e369"
+            }
+        ],
+                "emoji" : "<:792pxJalTokJad:1210271524364353616>"
+    }
+]
