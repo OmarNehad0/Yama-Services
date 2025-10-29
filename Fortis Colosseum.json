@@ -1,0 +1,33 @@
+[
+    {
+        "name": "Dizana's Quiver",
+        "aliases": ["quiver"],
+        "caption" : "You keep all loot.\n Prices may vary depending on stats and gear \nParsec Upcharge Cost +40%",
+        "items": [
+            {
+                "name": "Quiver Max Gear - Login",
+                "price": 150000000,
+                "image" : "https://oldschool.runescape.wiki/images/thumb/Blessed_dizana%27s_quiver_detail.png/148px-Blessed_dizana%27s_quiver_detail.png?b4e51"
+            },
+            {
+                "name": "Quiver Budget Gear - Login",
+                "price": 200000000,
+                "image" : "https://oldschool.runescape.wiki/images/thumb/Blessed_dizana%27s_quiver_detail.png/148px-Blessed_dizana%27s_quiver_detail.png?b4e51"
+            }
+        ],
+                "emoji" : "<:Dizanas_max_cape_detail:1230053959452856371>"
+    },
+{
+        "name": "Farming Splinters",
+        "aliases": ["quiver"],
+        "caption" : "You keep all loot.",
+        "items": [
+            {
+                "name": "Wave 1",
+                "price": 400000,
+                "image" : "https://oldschool.runescape.wiki/w/Sunfire_splinters#/media/File:Sunfire_splinters_4_detail.png"
+            }
+        ],
+                "emoji" : "<:Dizanas_max_cape_detail:1230053959452856371>"
+    }
+]
