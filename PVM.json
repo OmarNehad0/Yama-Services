@@ -1,0 +1,409 @@
+[
+    {
+        "name": "Barrows Chests",
+        "aliases": [
+            "barrows"
+        ],
+        "caption": "Prices below are per kill.\nUpcharges may apply based on supplies.\nYou keep all loot.",
+        "items": [
+            {
+                "name": "Barrows Brothers - Trident + Tele",
+                "price": 1000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Dharok_the_Wretched.png/38px-Dharok_the_Wretched.png?33092"
+            }
+        ],
+        "emoji": "<:38pxAhrim_the_Blighted:1321210153311146015>"
+    },
+    {
+        "name": "Corporeal Beast",
+        "aliases": [
+            "corp"
+        ],
+        "caption": "Prices below are per kill.\nUpcharges may apply based on supplies.\nYou keep all loot.",
+        "items": [
+            {
+                "name": "Corporeal Beast - DWH + Arclight + BGS",
+                "price": 4000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Corporeal_Beast_%28Christmas%29.png/270px-Corporeal_Beast_%28Christmas%29.png?c413a"
+            }
+        ],
+        "emoji": "<:270pxCorporeal_Beast:1222386633203126312>"
+    },
+    {
+        "name": "Dagganoth Kings",
+        "aliases": [
+            "dks"
+        ],
+        "caption": "Prices below are per kill.\nUpcharges may apply based on supplies.\nYou keep all loot.",
+        "items": [
+            {
+                "name": "Dagganoth Kings - Rex Only",
+                "price": 600000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Dagannoth_Supreme.png/230px-Dagannoth_Supreme.png?81f00"
+            },
+            {
+                "name": "Dagganoth Kings - Whole rotation",
+                "price": 1750000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Dagannoth_Supreme.png/230px-Dagannoth_Supreme.png?81f00"
+            },
+            {
+                "name": "Dagganoth Kings - Slayer Task",
+                "price": 1600000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Dagannoth_Supreme.png/230px-Dagannoth_Supreme.png?81f00"
+            }
+        ],
+        "emoji": "<:230pxDagannoth_Supreme:1321211822367571968>"
+    },
+    {
+        "name": "Giant Mole",
+        "aliases": [
+            "mole"
+        ],
+        "caption": "Prices below are per kill.\nUpcharges may apply based on supplies.\nYou keep all loot.\n+25% if no Falador Hard Diary.\n+15% if no cannon.",
+        "items": [
+            {
+                "name": "Giant Mole - T-Bow / Dhaork",
+                "price": 350000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Giant_Mole_%28Christmas%29.png/280px-Giant_Mole_%28Christmas%29.png?5c1e2"
+            },
+            {
+                "name": "Giant Mole - Bowfa Setup",
+                "price": 400000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Giant_Mole_%28Christmas%29.png/280px-Giant_Mole_%28Christmas%29.png?5c1e2"
+            }
+        ],
+        "emoji": "<:280pxGiant_Mole_Christmas:1321213345768145067>"
+    },
+    {
+        "name": "Kalphite Queen",
+        "aliases": [
+            "kq"
+        ],
+        "caption": "Prices below are per kill.\nUpcharges may apply based on supplies.\nYou keep all loot.",
+        "items": [
+            {
+                "name": "Kalphite Queen - With Desert Elite Diary - Max Setup",
+                "price": 1100000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Kalphite_Queen.png/290px-Kalphite_Queen.png?a4955"
+            },
+            {
+                "name": "Kalphite Queen - With Desert Elite Diary - Decent Gears",
+                "price": 1300000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Kalphite_Queen.png/290px-Kalphite_Queen.png?a4955"
+            },
+            {
+                "name": "Kalphite Queen - Without Desert Elite Diary - Max Setip",
+                "price": 1400000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Kalphite_Queen.png/290px-Kalphite_Queen.png?a4955"
+            },
+            {
+                "name": "Kalphite Queen - Without Desert Elite Diary - Decent Setup",
+                "price": 2000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Kalphite_Queen.png/290px-Kalphite_Queen.png?a4955"
+            }
+        ],
+        "emoji": "<:290pxKalphite_Queen:1222389282900021379>"
+    },
+    {
+        "name": "Phosani's Nightmare",
+        "aliases": [
+            "pnm"
+        ],
+        "caption": "Prices below are per kill.\nUpcharges may apply based on supplies.\nYou keep all loot.\n+10% if no tele",
+        "items": [
+            {
+                "name": "Phosani's Nightmare - Scythe",
+                "price": 7000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Phosani%27s_Nightmare_%28Christmas%29.png/250px-Phosani%27s_Nightmare_%28Christmas%29.png?10ebd"
+            },
+            {
+                "name": "Phosani's Nightmare - Inquisitor's Mace",
+                "price": 9000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Phosani%27s_Nightmare_%28Christmas%29.png/250px-Phosani%27s_Nightmare_%28Christmas%29.png?10ebd"
+            },
+            {
+                "name": "Phosani's Nightmare - Bludgeon",
+                "price": 10000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Phosani%27s_Nightmare_%28Christmas%29.png/250px-Phosani%27s_Nightmare_%28Christmas%29.png?10ebd"
+            }
+        ],
+        "emoji": "<:250pxPhosanis_Nightmare_Christma:1321218051852603402>"
+    },
+    {
+        "name": "Sarachnis",
+        "aliases": [
+            "sarachnis"
+        ],
+        "caption": "Prices below are per kill.\nUpcharges may apply based on supplies.\nYou keep all loot.",
+        "items": [
+            {
+                "name": "Sarachnis",
+                "price": 450000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Sarachnis.png/280px-Sarachnis.png?8f040"
+            }
+        ],
+        "emoji": "<:280pxVenenatis:1321176451277393940>"
+    },
+    {
+        "name": "Lizardmen Shamans",
+        "aliases": [
+            "shamans"
+        ],
+        "caption": "Prices below are per kill.\nUpcharges may apply based on supplies.\nYou keep all loot.\n+20% if no cannon",
+        "items": [
+            {
+                "name": "Shamans - Bowfa",
+                "price": 120000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Dragon_warhammer_detail.png/120px-Dragon_warhammer_detail.png?7f65a"
+            },
+            {
+                "name": "Shamans - Blowpipe",
+                "price": 150000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Dragon_warhammer_detail.png/120px-Dragon_warhammer_detail.png?7f65a"
+            },
+            {
+                "name": "Shamans -  MSB",
+                "price": 200000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Dragon_warhammer_detail.png/120px-Dragon_warhammer_detail.png?7f65a"
+            }
+        ],
+        "emoji": "<:120pxDragon_warhammer_detail:1321221099161391114>"
+    },
+    {
+        "name": "The Nightmare",
+        "aliases": [
+            "nm"
+        ],
+        "caption": "Prices below are per kill.\nUpcharges may apply based on supplies.\nYou keep all loot.",
+        "items": [
+            {
+                "name": "The Nightmare - Solo",
+                "price": 12000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Phosani%27s_Nightmare_%28Christmas%29.png/250px-Phosani%27s_Nightmare_%28Christmas%29.png?10ebd"
+            },
+            {
+                "name": "The Nightmare -Team 3-5",
+                "price": 7000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Phosani%27s_Nightmare_%28Christmas%29.png/250px-Phosani%27s_Nightmare_%28Christmas%29.png?10ebd"
+            }
+        ],
+        "emoji": "<:250pxPhosanis_Nightmare_Christma:1321218051852603402>"
+    },
+    {
+        "name": "Skotizo",
+        "aliases": [
+            "skotizo"
+        ],
+        "caption": "Prices below are per kill.\nUpcharges may apply based on supplies.\nYou keep all loot.",
+        "items": [
+            {
+                "name": "Skotizo",
+                "price": 300000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Skotizo.png/250px-Skotizo.png?dc8b8"
+            }
+        ],
+        "emoji": "<:250pxSkotizo:1321222794708783186>"
+    },
+    {
+        "name": "Vorkath",
+        "aliases": [
+            "vorkath"
+        ],
+        "caption": "Prices below are per kill.\nUpcharges may apply based on supplies.\nYou keep all loot.",
+        "items": [
+            {
+                "name": "Vorkath - DHL / DHCB",
+                "price": 1000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Vorkath_%28Christmas%29.png/280px-Vorkath_%28Christmas%29.png?e8bc2"
+            },
+            {
+                "name": "Vorkath - Low Gear",
+                "price": 1300000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Vorkath_%28Christmas%29.png/280px-Vorkath_%28Christmas%29.png?e8bc2"
+            }
+        ],
+        "emoji": "<:280pxVorkath_Christmas:1321225671137296435>"
+    },
+    {
+        "name": "Zalcano",
+        "aliases": [
+            "zalcano"
+        ],
+        "caption": "Prices below are per kill.\nUpcharges may apply based on supplies.\nYou keep all loot.",
+        "items": [
+            {
+                "name": "Zalcano - Solo",
+                "price": 5000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Zalcano.png/200px-Zalcano.png?6244d"
+            },
+            {
+                "name": "Zalcano - Team",
+                "price": 1250000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Zalcano.png/200px-Zalcano.png?6244d"
+            }
+        ],
+        "emoji": "<:200pxZalcano:1321226133345144937>"
+    },
+    {
+        "name": "Zulrah",
+        "aliases": [
+            "zulrah"
+        ],
+        "caption": "Prices below are per kill.\nUpcharges may apply based on Gear & Stats.\nYou keep all loot.\n+100k more if no anti",
+        "items": [
+            {
+                "name": "Zulrah -   Tbow + Shadow",
+                "price": 800000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Zulrah_%28serpentine%2C_Christmas%29.png/250px-Zulrah_%28serpentine%2C_Christmas%29.png?e8bc2"
+            },
+            {
+                "name": "Zulrah - Bowfa + Trident",
+                "price": 900000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Zulrah_%28serpentine%2C_Christmas%29.png/250px-Zulrah_%28serpentine%2C_Christmas%29.png?e8bc2"
+            }
+        ],
+        "emoji": "<:250pxZulrah_serpentine:1222390176563859547>"
+    },
+    {
+        "name": "Lunar Chest",
+        "aliases": [
+            "lunar chest"
+        ],
+        "caption": "1kc = Killng all 3 moons.\nUpcharges may apply based on Gear & Stats.\nYou keep all loot.",
+        "items": [
+            {
+                "name": "Lunar Chest -   Max Gear",
+                "price": 2000000,
+                "image": "https://oldschool.runescape.wiki/w/Blood_Moon#/media/File:Blood_Moon.png"
+            },
+            {
+                "name": "Lunar Chest -   Decent Gear",
+                "price": 3000000,
+                "image": "https://oldschool.runescape.wiki/w/Blood_Moon#/media/File:Blood_Moon.png"
+            }
+        ]
+    },
+    {
+        "name": "The Hueycoatl",
+        "aliases": [
+            "The Hueycoatl"
+        ],
+        "caption": "Prices below are per kill.\nUpcharges may apply based on supplies.\nYou keep all loot.",
+        "items": [
+            {
+                "name": "Max Gear - Small team",
+                "price": 2000000,
+                "image": "https://oldschool.runescape.wiki/w/The_Hueycoatl#/media/File:The_Hueycoatl.png"
+            },
+            {
+                "name": "Max Gear - Solo",
+                "price": 5000000,
+                "image": "https://oldschool.runescape.wiki/w/The_Hueycoatl#/media/File:The_Hueycoatl.png"
+            }
+        ]
+    },
+    {
+        "name": "Phantom Muspah",
+        "aliases": [
+            "Phantom Muspah"
+        ],
+        "caption": "Prices below are per kill.\nUpcharges may apply based on supplies.\nYou keep all loot.",
+        "items": [
+            {
+                "name": "T-Bow / DCB or ACB",
+                "price": 1000000,
+                "image": "https://oldschool.runescape.wiki/images/Phantom_Muspah_%28ranged%29.png?9cf6a"
+            },
+            {
+                "name": "Bowfa / DCB or ACB",
+                "price": 1250000,
+                "image": "https://oldschool.runescape.wiki/images/Phantom_Muspah_%28ranged%29.png?9cf6a"
+            },
+            {
+                "name": "ACB / Trident",
+                "price": 1500000,
+                "image": "https://oldschool.runescape.wiki/images/Phantom_Muspah_%28ranged%29.png?9cf6a"
+            }
+        ]
+    },
+    {
+        "name": "Doom of Mokhaiotl",
+        "aliases": [
+            "doom",
+            "delve"
+        ],
+        "caption": "Upcharges may apply based on Gear & Stats.\nYou keep all loot.\nRequirements :\n Elite Void / Scorching Bow / Tbow / ZCB.\n  Arceuus Spellbook / Autocast Staff /  Scyth / Crystal halberd.",
+        "items": [
+            {
+                "name": "Waves 1 : 4",
+                "price": 9000000,
+                "image": "https://oldschool.runescape.wiki/w/Doom_of_Mokhaiotl#/media/File:Doom_of_Mokhaiotl.png"
+            },
+            {
+                "name": "Waves 1 : 6",
+                "price": 17000000,
+                "image": "https://oldschool.runescape.wiki/w/Doom_of_Mokhaiotl#/media/File:Doom_of_Mokhaiotl.png"
+            },
+            {
+                "name": "Waves 1 : 8",
+                "price": 35000000,
+                "image": "https://oldschool.runescape.wiki/w/Doom_of_Mokhaiotl#/media/File:Doom_of_Mokhaiotl.png"
+            },
+            {
+                "name": "Each Wave After Wave 8",
+                "price": 15000000,
+                "image": "https://oldschool.runescape.wiki/w/Doom_of_Mokhaiotl#/media/File:Doom_of_Mokhaiotl.png"
+            }
+        ]
+    },
+    {
+        "name": "Yama",
+        "aliases": [
+            "yama",
+            "yama contracts"
+        ],
+        "caption": "Upcharges may apply based on Gear & Stats.\nYou keep all loot.\nRequirements :\n Emberlight /  Purging Staff / SGS / Shadow \n Heart / Accursed sceptre + horn /  Elder Maul",
+        "items": [
+            {
+                "name": "Solo",
+                "price": 10000000,
+                "image": "https://oldschool.runescape.wiki/w/Yama#/media/File:Farming_&_Autocast_QoL_Improvements_(6).gif"
+            },
+            {
+                "name": "Duo",
+                "price": 6000000,
+                "image": "https://oldschool.runescape.wiki/w/Yama#/media/File:Farming_&_Autocast_QoL_Improvements_(6).gif"
+            },
+            {
+                "name": "Full Radiant oathplate armour",
+                "price": 375000000,
+                "image": "https://oldschool.runescape.wiki/w/Yama#/media/File:Farming_&_Autocast_QoL_Improvements_(6).gif"
+            },
+            {
+                "name": "Bloodied blows",
+                "price": 120000000,
+                "image": "https://oldschool.runescape.wiki/w/Yama#/media/File:Farming_&_Autocast_QoL_Improvements_(6).gif"
+            },
+            {
+                "name": "Sensory clouding",
+                "price": 120000000,
+                "image": "https://oldschool.runescape.wiki/w/Yama#/media/File:Farming_&_Autocast_QoL_Improvements_(6).gif"
+            },
+            {
+                "name": "Sensory clouding",
+                "price": 60000000,
+                "image": "https://oldschool.runescape.wiki/w/Yama#/media/File:Farming_&_Autocast_QoL_Improvements_(6).gif"
+            },
+            {
+                "name": "Divine severance",
+                "price": 60000000,
+                "image": "https://oldschool.runescape.wiki/w/Yama#/media/File:Farming_&_Autocast_QoL_Improvements_(6).gif"
+            },
+            {
+                "name": "Forfeit breath ",
+                "price": 40000000,
+                "image": "https://oldschool.runescape.wiki/w/Yama#/media/File:Farming_&_Autocast_QoL_Improvements_(6).gif"
+            }
+        ]
+    }
+]
