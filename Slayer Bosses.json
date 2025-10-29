@@ -1,0 +1,212 @@
+[
+    {
+        "name": "Arraxor",
+        "aliases": [
+            "arraxor",
+            "arrax"
+        ],
+        "caption": "You keep all loot.\nPrices may vary depending on stats and gear.\n+10% if no blood fury",
+        "items": [
+            {
+                "name": "Arraxor - Max Setup",
+                "price": 1000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Araxxor.png/280px-Araxxor.png?35d2e"
+            }
+        ],
+        "emoji": "<:280pxAraxxor:1321176564590706719>"
+    },
+    {
+        "name": "Abyssal Sire",
+        "aliases": [
+            "sire"
+        ],
+        "caption": "Prices below are per kill.\nUpcharges may apply based on supplies.\nYou keep all loot.",
+        "items": [
+            {
+                "name": "Abyssal Sire - Max Setup",
+                "price": 1000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Abyssal_Sire.png/280px-Abyssal_Sire.png?d2205"
+            }
+        ],
+        "emoji": "<:280pxAbyssal_Sire:1231913897624338502>"
+    },
+    {
+        "name": "Alchemical Hydra",
+        "aliases": [
+            "hydra"
+        ],
+        "caption": "Prices below are per kill.\nUpcharges may apply based on supplies.\nYou keep all loot.",
+        "items": [
+            {
+                "name": "Alchemical Hydra - Twisted Bow or Bowfa or Dragonhunter Lance",
+                "price": 1000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Alchemical_Hydra_%28serpentine%29.png/272px-Alchemical_Hydra_%28serpentine%29.png?925dd"
+            },
+            {
+                "name": "Alchemical Hydra - Toxic Blowpipe (BP)",
+                "price": 1250000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Alchemical_Hydra_%28serpentine%29.png/272px-Alchemical_Hydra_%28serpentine%29.png?925dd"
+            }
+        ],
+        "emoji": "<:270pxAlchemical_Hydra:1222388990565421116>"
+    },
+    {
+        "name": "Cerbrus",
+        "aliases": [
+            "cerb"
+        ],
+        "caption": "Prices below are per kill.\nUpcharges may apply based on supplies.\nYou keep all loot.",
+        "items": [
+            {
+                "name": "Cerbrus - Max Setup",
+                "price": 700000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Cerberus_%28Christmas%29.png/280px-Cerberus_%28Christmas%29.png?e8bc2"
+            }
+        ],
+        "emoji": "<:280pxCerberus:1222388820373274707>"
+    },
+    {
+        "name": "Demonic Gorillas",
+        "aliases": [
+            "demonic"
+        ],
+        "caption": "Prices below are per kill.\nUpcharges may apply based on supplies.\nYou keep all loot.\n+15% if off task",
+        "items": [
+            {
+                "name": "Demonic Gorillas - Max Setup",
+                "price": 600000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Demonic_gorilla.png/260px-Demonic_gorilla.png?5f457"
+            },
+            {
+                "name": "Demonic Gorillas - Decent Setup",
+                "price": 750000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Demonic_gorilla.png/260px-Demonic_gorilla.png?5f457"
+            }
+        ],
+        "emoji": "<:260pxDemonic_gorilla:1321212506240188416>"
+    },
+    {
+        "name": "Grotesque Guardians",
+        "aliases": [
+            "guard"
+        ],
+        "caption": "Prices below are per kill.\nUpcharges may apply based on supplies.\nYou keep all loot.",
+        "items": [
+            {
+                "name": "Grotesque Guardians - Max Setup",
+                "price": 700000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Midnight_%28follower%29.png/200px-Midnight_%28follower%29.png?e4ec7"
+            },
+            {
+                "name": "Grotesque Guardians - Decent Setup",
+                "price": 900000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Midnight_%28follower%29.png/200px-Midnight_%28follower%29.png?e4ec7"
+            }
+        ],
+        "emoji": "<:200pxMidnight_follower:1321214375511461908>"
+    },
+    {
+        "name": "Kalphite Queen",
+        "aliases": [
+            "kq"
+        ],
+        "caption": "Prices below are per kill.\nUpcharges may apply based on supplies.\nYou keep all loot.",
+        "items": [
+            {
+                "name": "Kalphite Queen - With Desert Elite Diary - Max Setup",
+                "price": 1100000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Kalphite_Queen.png/290px-Kalphite_Queen.png?a4955"
+            },
+            {
+                "name": "Kalphite Queen - With Desert Elite Diary - Decent Gears",
+                "price": 1300000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Kalphite_Queen.png/290px-Kalphite_Queen.png?a4955"
+            },
+            {
+                "name": "Kalphite Queen - Without Desert Elite Diary - Max Setip",
+                "price": 1400000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Kalphite_Queen.png/290px-Kalphite_Queen.png?a4955"
+            },
+            {
+                "name": "Kalphite Queen - Without Desert Elite Diary - Decent Setup",
+                "price": 2000000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Kalphite_Queen.png/290px-Kalphite_Queen.png?a4955"
+            }
+        ],
+        "emoji": "<:290pxKalphite_Queen:1222389282900021379>"
+    },
+    {
+        "name": "Kraken",
+        "aliases": [
+            "kraken"
+        ],
+        "caption": "Prices below are per kill.\nUpcharges may apply based on supplies.\nYou keep all loot.",
+        "items": [
+            {
+                "name": "Kraken - With Sanguinesti Staff",
+                "price": 250000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Kraken_%28Christmas%29.png/290px-Kraken_%28Christmas%29.png?9c9b4"
+            },
+            {
+                "name": "Kraken - Without Sanguinesti Staff",
+                "price": 350000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Kraken_%28Christmas%29.png/290px-Kraken_%28Christmas%29.png?9c9b4"
+            }
+        ],
+        "emoji": "<:290pxKraken_Christmas:1321216798808477757>"
+    },
+    {
+        "name": "Skotizo",
+        "aliases": [
+            "skotizo"
+        ],
+        "caption": "Prices below are per kill.\nUpcharges may apply based on supplies.\nYou keep all loot.",
+        "items": [
+            {
+                "name": "Skotizo",
+                "price": 300000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Skotizo.png/250px-Skotizo.png?dc8b8"
+            }
+        ],
+        "emoji": "<:250pxSkotizo:1321222794708783186>"
+    },
+    {
+        "name": "Thermonuclear Smoke Devil",
+        "aliases": [
+            "thermy"
+        ],
+        "caption": "Prices below are per kill.\nUpcharges may apply based on supplies.\nYou keep all loot.",
+        "items": [
+            {
+                "name": "Thermonuclear Smoke Devil - With spec pool",
+                "price": 200000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Thermonuclear_smoke_devil.png/260px-Thermonuclear_smoke_devil.png?de858"
+            },
+            {
+                "name": "Thermonuclear Smoke Devil - Without spec pool",
+                "price": 250000,
+                "image": "https://oldschool.runescape.wiki/images/thumb/Thermonuclear_smoke_devil.png/260px-Thermonuclear_smoke_devil.png?de858"
+            }
+        ],
+        "emoji": "<:260pxThermonuclear_smoke_devil:1321224577728123011>"
+    },
+    {
+        "name": "Tormented Demons",
+        "aliases": [
+            "Tormented Demons"
+        ],
+        "caption": "Prices below are per kill.\nUpcharges may apply based on Gear & Stats.\nYou keep all loot.\n+15% If no task",
+        "items": [
+            {
+                "name": "Emberlight / Scorching",
+                "price": 700000,
+                "image": "https://oldschool.runescape.wiki/w/Tormented_Demon#/media/File:Tormented_Demon_(1).png"
+            },
+            {
+                "name": "Bowfa / Arclight",
+                "price": 800000,
+                "image": "https://oldschool.runescape.wiki/w/Tormented_Demon#/media/File:Tormented_Demon_(1).png"
+            }
+        ]
+    }
+]
