@@ -354,18 +354,18 @@ async def pay(ctx):
 
 # List of JSON file paths
 JSON_FILES = [
-    "MegaScales.json",
+    "Desert Treasure 2 Bosses.json",
     "Chambers Of Xeric.json",
     "Theatre Of Blood.json",
     "Tombs Of Amascuts.json",
-    "Infernal - Quivers.json",
-    "FireCapes.json",
-    "Desert Treasure 2 Bosses.json",
-    "God Wars Dungeon.json",
-    "The Gauntlet.json",
+    "Fortis Collosseum.json",
     "Wilderness Bosses.json",
-    "Other Bosses.json",
-    "Yama - Delve.json"
+    "God Wars Dungeon.json",
+    "Slayer Bosses.json",
+    "The Gauntlet.json",
+    "MegaScales.json",
+    "Capes.json",
+    "PVM.json"
 ]
 
 # Emoji mapping for each JSON file
@@ -373,15 +373,15 @@ EMOJI_MAP = {
     "Chambers Of Xeric.json": "🦄 | ",
     "God Wars Dungeon.json": "🦅 | ",
     "Desert Treasure 2 Bosses.json": "🐲 | ",
-    "FireCapes.json": "👹 | ",
+    "Capes.json": "👹 | ",
     "The Gauntlet.json": "🐷 | ",
-    "Infernal - Quivers.json": "👹 | ",
+    "Fortis Collosseum.json": "👹 | ",
     "Theatre Of Blood.json": "🕸 | ",
     "Wilderness Bosses.json": "🦞 | ",
     "Tombs Of Amascuts.json": "🐫 | ",
-    "Other Bosses.json": "🦍 | ",
+    "Slayer Bosses.json": "🦍 | ",
     "MegaScales.json" : "🦄 | ",
-    "Yama - Delve.json": "🪄 | "
+    "PVM": "🧬 | "
 }
 
 # Function to load data from a JSON file
