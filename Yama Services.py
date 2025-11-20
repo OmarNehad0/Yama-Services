@@ -92,8 +92,6 @@ def build_rate_embed(selling_rate: float, buying_rate: float) -> discord.Embed:
 
     # thumbnail, banner & footer exactly as requested
     embed.set_thumbnail(url=THUMB_URL)
-    # banner - use the local path you uploaded (developer note: will be transformed into url by your environment)
-    embed.set_image(url=BANNER_LOCAL_PATH)
     embed.set_footer(text="Yama Services – We Will NEVER DM/ADD You First", icon_url=FOOTER_ICON_URL)
     return embed
 
@@ -152,6 +150,9 @@ async def slash_rate(interaction: discord.Interaction, selling: float, buying: f
     sent_msg = await target_channel.send(embed=embed)
     save_widget_doc(target_channel.id, sent_msg.id, selling, buying)
     await interaction.followup.send(f"✅ Posted new rate embed in {target_channel.mention}.", ephemeral=True)
+
+
+
 # ----------------- QUEST JSON LOADING -----------------
 def load_quests_from_file(file_path):
     if not os.path.exists(file_path):
@@ -632,8 +633,8 @@ async def feedback(ctx):
                 )
             )
             embed.set_author(name=f"{interaction.user.name} left a vouch!", icon_url=interaction.user.display_avatar.url)
-            embed.set_thumbnail(url="https://media.discordapp.net/attachments/1208792947232079955/1376855814735921212/discord_with_services_avatar.gif?ex=6836d866&is=683586e6&hm=c818d597519f4b2e55c77aeae4affbf0397e12591743e1069582f605c125f80c&=")
-            embed.set_footer(text="Thank you for your feedback!", icon_url="https://media.discordapp.net/attachments/1208792947232079955/1376855814735921212/discord_with_services_avatar.gif?ex=6836d866&is=683586e6&hm=c818d597519f4b2e55c77aeae4affbf0397e12591743e1069582f605c125f80c&=")
+            embed.set_thumbnail(url="https://media.discordapp.net/attachments/1428420848661958776/1429670971429884024/avatar.gif?ex=691fdad9&is=691e8959&hm=a4584e77172c77c09ff160c233d1082358de3ff22f37a5755012f5502cec217f&=&width=240&height=240")
+            embed.set_footer(text="Thank you for your feedback!", icon_url="https://media.discordapp.net/attachments/1428420848661958776/1429670971429884024/avatar.gif?ex=691fdad9&is=691e8959&hm=a4584e77172c77c09ff160c233d1082358de3ff22f37a5755012f5502cec217f&=&width=240&height=240")
 
             feedback_channel = bot.get_channel(FEEDBACK_CHANNEL_ID)
             if feedback_channel:
@@ -654,8 +655,8 @@ async def feedback(ctx):
         )
     )
     initial_embed.set_author(name=ctx.author.name, icon_url=ctx.author.display_avatar.url)
-    initial_embed.set_thumbnail(url="https://media.discordapp.net/attachments/1208792947232079955/1376855814735921212/discord_with_services_avatar.gif?ex=6836d866&is=683586e6&hm=c818d597519f4b2e55c77aeae4affbf0397e12591743e1069582f605c125f80c&=")
-    initial_embed.set_footer(text="Yama Services", icon_url="https://media.discordapp.net/attachments/1208792947232079955/1376855814735921212/discord_with_services_avatar.gif?ex=6836d866&is=683586e6&hm=c818d597519f4b2e55c77aeae4affbf0397e12591743e1069582f605c125f80c&=")
+    initial_embed.set_thumbnail(url="https://media.discordapp.net/attachments/1428420848661958776/1429670971429884024/avatar.gif?ex=691fdad9&is=691e8959&hm=a4584e77172c77c09ff160c233d1082358de3ff22f37a5755012f5502cec217f&=&width=240&height=240")
+    initial_embed.set_footer(text="Yama Services", icon_url="https://media.discordapp.net/attachments/1428420848661958776/1429670971429884024/avatar.gif?ex=691fdad9&is=691e8959&hm=a4584e77172c77c09ff160c233d1082358de3ff22f37a5755012f5502cec217f&=&width=240&height=240")
 
     # Send the embed with rating buttons
     view = FeedbackView()
@@ -894,10 +895,10 @@ class KillCountModal(Modal):
                     embed.set_thumbnail(url=item["image"])
 
             embed.set_footer(
-                text="Grinders Bot",
-                icon_url="https://media.discordapp.net/attachments/1208792947232079955/1376855814735921212/discord_with_services_avatar.gif?ex=6836d866&is=683586e6&hm=c818d597519f4b2e55c77aeae4affbf0397e12591743e1069582f605c125f80c&="  # Footer with thumbnail-style icon
+                text="Yama Bot",
+                icon_url="https://media.discordapp.net/attachments/1428420848661958776/1429670971429884024/avatar.gif?ex=691fdad9&is=691e8959&hm=a4584e77172c77c09ff160c233d1082358de3ff22f37a5755012f5502cec217f&=&width=240&height=240"  # Footer with thumbnail-style icon
             )
-            embed.set_author(name="Boss Calculator", icon_url="https://media.discordapp.net/attachments/1208792947232079955/1376855814735921212/discord_with_services_avatar.gif?ex=6836d866&is=683586e6&hm=c818d597519f4b2e55c77aeae4affbf0397e12591743e1069582f605c125f80c&=")
+            embed.set_author(name="Boss Calculator", icon_url="https://media.discordapp.net/attachments/1428420848661958776/1429670971429884024/avatar.gif?ex=691fdad9&is=691e8959&hm=a4584e77172c77c09ff160c233d1082358de3ff22f37a5755012f5502cec217f&=&width=240&height=240")
             await interaction.response.send_message(embed=embed, ephemeral=True)
         except ValueError:
             await interaction.response.send_message("Please provide a valid number.", ephemeral=True)
@@ -941,9 +942,9 @@ async def log_interaction(user, selected_boss, json_file, kill_count=None):
     # Add a footer with a professional touch
     embed.set_footer(
         text="Logged by Omar Bot",
-        icon_url="https://media.discordapp.net/attachments/1208792947232079955/1376855814735921212/discord_with_services_avatar.gif?ex=6836d866&is=683586e6&hm=c818d597519f4b2e55c77aeae4affbf0397e12591743e1069582f605c125f80c&="
+        icon_url="https://media.discordapp.net/attachments/1428420848661958776/1429670971429884024/avatar.gif?ex=691fdad9&is=691e8959&hm=a4584e77172c77c09ff160c233d1082358de3ff22f37a5755012f5502cec217f&=&width=240&height=240"
     )  # Custom footer icon with timestamp
-    embed.set_author(name="Omar Bot Logging", icon_url="https://media.discordapp.net/attachments/1208792947232079955/1376855814735921212/discord_with_services_avatar.gif?ex=6836d866&is=683586e6&hm=c818d597519f4b2e55c77aeae4affbf0397e12591743e1069582f605c125f80c&=")
+    embed.set_author(name="Omar Bot Logging", icon_url="https://media.discordapp.net/attachments/1428420848661958776/1429670971429884024/avatar.gif?ex=691fdad9&is=691e8959&hm=a4584e77172c77c09ff160c233d1082358de3ff22f37a5755012f5502cec217f&=&width=240&height=240")
 
     # Check if the boss has any associated image
     if "image" in boss and boss["image"]:
@@ -1001,7 +1002,7 @@ async def start(ctx):
     banner_gif_url = "https://i.postimg.cc/7Y1BvxWN/server-banner2.gif"
     await ctx.send(banner_gif_url)
     import io
-    ticket_link = "https://discord.com/channels/1208792946401615893/1208792946883690550"
+    ticket_link = "https://discord.com/channels/1426534299888254988/1426548817611980840"
     voucher_link = "https://www.sythe.org/threads/www-sythe-org-threads-cynx-osrs-service-vouch-thread/"
     
 
@@ -1023,7 +1024,7 @@ async def start(ctx):
     # Ticket & Voucher Buttons
     button_view = discord.ui.View(timeout=None)  # Persistent view
     ticket_button = discord.ui.Button(label="🎟️ Open a ticket - Click Here", url=ticket_link, style=discord.ButtonStyle.url)
-    voucher_button = discord.ui.Button(label="Our Sythe Vouches",url=voucher_link,style=discord.ButtonStyle.url,emoji=discord.PartialEmoji(name="sytheicon", id=1332330797998280724))
+    voucher_button = discord.ui.Button(label="Our Sythe Vouches",url=voucher_link,style=discord.ButtonStyle.url,emoji=discord.PartialEmoji(name="sytheicon", id=1428430819042787369))
     button_view.add_item(ticket_button)
     button_view.add_item(voucher_button)
     await ctx.send(view=button_view)
@@ -1115,8 +1116,8 @@ async def QuestsDiscount(interaction: discord.Interaction, percent: int):
     )
 # Define the constants
 EMOJI_CATEGORY = {
-    "gp": "<:240pxCoins_detail:1416768496020488303>",  # Replace with your emoji ID for GP
-    "usd": "<:Bitcoin:1416768698672349355>"  # Replace with your emoji ID for USD
+    "gp": "<:240pxCoins_detail:1428434758135975936>",  # Replace with your emoji ID for GP
+    "usd": "<:TetherUSDTicon:1428433565305143529>"  # Replace with your emoji ID for USD
 }
 
 # Load quest data from JSON file
@@ -1185,22 +1186,22 @@ async def quest_calculator(ctx, *, quests: str):
     total_price_usd = price_to_usd(total_price_gp)
 
     embed = discord.Embed(
-        title="<:800pxQuests:1416769923312652299> Quest Calculator <:800pxQuests:1416769923312652299>",
+        title="<:Quests:1434940719142932600> Quest Calculator <:Quests:1434940719142932600>",
         color=discord.Color.from_rgb(139, 0, 0)
     )
     embed.set_thumbnail(
-        url="https://media.discordapp.net/attachments/1208792947232079955/1376855814735921212/discord_with_services_avatar.gif?ex=6836d866&is=683586e6&hm=c818d597519f4b2e55c77aeae4affbf0397e12591743e1069582f605c125f80c&="
+        url="https://media.discordapp.net/attachments/1428420848661958776/1429670971429884024/avatar.gif?ex=691fdad9&is=691e8959&hm=a4584e77172c77c09ff160c233d1082358de3ff22f37a5755012f5502cec217f&=&width=240&height=240"
     )
     embed.set_footer(
         text="Grinders Bot",
-        icon_url="https://media.discordapp.net/attachments/1208792947232079955/1376855814735921212/discord_with_services_avatar.gif?ex=6836d866&is=683586e6&hm=c818d597519f4b2e55c77aeae4affbf0397e12591743e1069582f605c125f80c&="
+        icon_url="https://media.discordapp.net/attachments/1428420848661958776/1429670971429884024/avatar.gif?ex=691fdad9&is=691e8959&hm=a4584e77172c77c09ff160c233d1082358de3ff22f37a5755012f5502cec217f&=&width=240&height=240"
     )
     embed.set_author(
-        name="Grinders Services",
-        icon_url='https://media.discordapp.net/attachments/1208792947232079955/1376855814735921212/discord_with_services_avatar.gif?ex=6836d866&is=683586e6&hm=c818d597519f4b2e55c77aeae4affbf0397e12591743e1069582f605c125f80c&='
+        name="Yama Services",
+        icon_url='https://media.discordapp.net/attachments/1428420848661958776/1429670971429884024/avatar.gif?ex=691fdad9&is=691e8959&hm=a4584e77172c77c09ff160c233d1082358de3ff22f37a5755012f5502cec217f&=&width=240&height=240'
     )
     embed.set_image(
-        url="https://i.postimg.cc/KjSKxhHP/banner-cynx.gif"
+        url="https://media.discordapp.net/attachments/1428372478408917125/1429672083780276325/bg.gif?ex=691fdbe2&is=691e8a62&hm=b80b1006a483a04e8604c968b9bfb87063865c32faa390483a8b6785f0a88a54&=&width=480&height=72"
     )
 
     if discount_percent > 0:
@@ -1239,7 +1240,7 @@ async def quest_calculator(ctx, *, quests: str):
     button_view = discord.ui.View(timeout=None)  # Persistent view
 
     # Ticket button with emoji
-    ticket_link = "https://discord.com/channels/1208792946401615893/1208792946883690550"
+    ticket_link = "https://discord.com/channels/1426534299888254988/1426548817611980840"
     voucher_link = "https://www.sythe.org/threads/www-sythe-org-threads-cynx-osrs-service-vouch-thread/"
     ticket_button = discord.ui.Button(
     label="🎟️ Open a Ticket - Click Here",
@@ -1262,8 +1263,8 @@ with open("xp_data.json", "r") as f:
 
 # Constants
 EMOJI_CATEGORY = {
-    "gp": "<:240pxCoins_detail:1416768496020488303>",  # Replace with your emoji ID for GP
-    "usd": "<:Bitcoin:1416768698672349355>"  # Replace with your emoji ID for USD
+    "gp": "<:240pxCoins_detail:1428434758135975936>",  # Replace with your emoji ID for GP
+    "usd": "<:TetherUSDTicon:1428433565305143529>"  # Replace with your emoji ID for USD
 }
 
 # Helper function to chunk text into multiple parts that fit Discord's field limit
@@ -1392,9 +1393,9 @@ async def run_skill_calculator(interaction, skill, level_start, level_end):
     # --- Build additional methods text (same logic, just showing $ + M) ---
     discount_multiplier = 1 - (discount_percent / 100)
     additional_text = "\n".join([
-        f"**<:Stats_icon:1222385545343275128>{method['title']}**\n"
-        f"<:Stats_icon:1222385545343275128> Requires level {method['req']} - {method['gpxp']}gp/xp\n"
-        f"<:Bitcoin:1428432416564838440> **${(((XP_TABLE[level_end] - XP_TABLE[level_start]) * method['gpxp'] / 1_000_000) * discount_multiplier) * exchange_rate:,.2f}**"
+        f"**<:Unnamed_29:1428845272443654154>{method['title']}**\n"
+        f"<:Unnamed_29:1428845272443654154> Requires level {method['req']} - {method['gpxp']}gp/xp\n"
+        f"<:TetherUSDTicon:1428433565305143529> **${(((XP_TABLE[level_end] - XP_TABLE[level_start]) * method['gpxp'] / 1_000_000) * discount_multiplier) * exchange_rate:,.2f}**"
         f" │ <:240pxCoins_detail:1428434758135975936> **{((XP_TABLE[level_end] - XP_TABLE[level_start]) * method['gpxp'] / 1_000_000) * discount_multiplier:,.2f}M**"
         for method in skill["methods"]
     ])
@@ -1420,13 +1421,13 @@ async def run_skill_calculator(interaction, skill, level_start, level_end):
     embed.add_field(name="**__End Level__**", value=f"**```{level_end}```**", inline=True)
     embed.add_field(name="**__Discount__**", value=f"**```{discount_percent}%```**", inline=True)
 
-    embed.set_thumbnail(url="https://media.discordapp.net/attachments/1208792947232079955/1376855814735921212/discord_with_services_avatar.gif")
-    embed.set_footer(text="Cynx Staff", icon_url="https://media.discordapp.net/attachments/1208792947232079955/1376855814735921212/discord_with_services_avatar.gif")
-    embed.set_author(name="Cynx Service", icon_url="https://media.discordapp.net/attachments/1208792947232079955/1376855814735921212/discord_with_services_avatar.gif")
+    embed.set_thumbnail(url="https://media.discordapp.net/attachments/1428420848661958776/1429670971429884024/avatar.gif?ex=691fdad9&is=691e8959&hm=a4584e77172c77c09ff160c233d1082358de3ff22f37a5755012f5502cec217f&=&width=240&height=240")
+    embed.set_footer(text="Cynx Staff", icon_url="https://media.discordapp.net/attachments/1428420848661958776/1429670971429884024/avatar.gif?ex=691fdad9&is=691e8959&hm=a4584e77172c77c09ff160c233d1082358de3ff22f37a5755012f5502cec217f&=&width=240&height=240")
+    embed.set_author(name="Cynx Service", icon_url="https://media.discordapp.net/attachments/1428420848661958776/1429670971429884024/avatar.gif?ex=691fdad9&is=691e8959&hm=a4584e77172c77c09ff160c233d1082358de3ff22f37a5755012f5502cec217f&=&width=240&height=240")
 
     embed.add_field(
         name=f"**__~Using the cheapest methods available~__**",
-        value=f"<:bitcoinbtclogo:1210395515133362316> **${total_usd_cost:,.2f}**\n"
+        value=f"<:TetherUSDTicon:1428433565305143529> **${total_usd_cost:,.2f}**\n"
         f"<:240pxCoins_detail:1428434758135975936> **{total_gp_cost:,.2f}M**",
         inline=False,
     )
@@ -1454,7 +1455,7 @@ async def run_skill_calculator(interaction, skill, level_start, level_end):
 
     # --- Create Buttons View ---
     button_view = View(timeout=None)
-    ticket_link = "https://discord.com/channels/1414948143250018307/1416764157298085888"
+    ticket_link = "https://discord.com/channels/1426534299888254988/1426548817611980840"
     voucher_link = "https://www.sythe.org/threads/www-sythe-org-threads-cynx-osrs-service-vouch-thread/"
 
     ticket_button = Button(
@@ -1495,7 +1496,7 @@ async def run_skill_calculator(interaction, skill, level_start, level_end):
 
 # List of channel IDs where the bot should react to messages
 CHANNEL_IDS = [
-    1416765580924686346, 1416765603330392195
+    1427196777785983037, 1426541340237365452,1426550442858512554,1426550828746936402
 ]
 
 # List of custom emojis (replace with your actual emoji IDs or names)
@@ -1511,7 +1512,7 @@ subscriptions = defaultdict(set)
 # Key: RSN (lowercase), Value: Set of channel IDs
 rsn_subscriptions = defaultdict(set)
 # Replace this with your actual Dink webhook channel ID
-DINK_CHANNEL_ID = 1416771003681607730  # <-- REPLACE THIS
+DINK_CHANNEL_ID = 1429013195367911435  # <-- REPLACE THIS
 
 # ==== Slash Commands ====
 
