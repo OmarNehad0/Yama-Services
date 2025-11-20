@@ -58,6 +58,394 @@ intents.members = True
 # Create bot instance with intents
 bot = commands.Bot(command_prefix="!", intents=intents)
 
+COLLECTION_NAME = "rate_widget"
+
+# URLs / paths
+THUMB_URL = "https://media.discordapp.net/attachments/1428420848661958776/1429670971429884024/avatar.gif"
+FOOTER_ICON_URL = THUMB_URL
+
+# Helper: build the exact embed text (uses the user's provided content)
+def build_rate_embed(selling_rate: float, buying_rate: float) -> discord.Embed:
+    embed = discord.Embed(
+        title="Welcome to Yama Services Gold Shop!",
+        description=(
+            "Fast & Reliable OSRS Gold\n\n"
+            ":logo: The Power Behind Yama Services: :logo:\n"
+            ":Animated_Arrow_Red: Instant Delivery\n"
+            ":Animated_Arrow_Red: Competitive Rates\n"
+            ":Animated_Arrow_Red: Verified Sellers\n"
+            ":Animated_Arrow_Red: 24/7 Live Support\n\n"
+            ":240pxCoins_detail: Selling Rate  :240pxCoins_detail:\n"
+            f"   {selling_rate:.2f}$ / M\n"
+            ":240pxCoins_detail: Buying Rate  :240pxCoins_detail:\n"
+            f"   {buying_rate:.2f}$ / M\n\n"
+            "+20% Fee For Non-Crypto Payments\n"
+            "Click the button below to open a Gold Ticket\n\n"
+            "For OSRS Services ?\n"
+            "Check : ⁠<#1426548817611980840>\n\n"
+            "By creating a ticket:\n"
+            "you accept our ⁠<#1426541407622926459>\n\n"
+            "Fast & Reliable OSRS Gold"
+        ),
+        color=discord.Color.dark_grey()
+    )
+
+    # thumbnail, banner & footer exactly as requested
+    embed.set_thumbnail(url=THUMB_URL)
+    # banner - use the local path you uploaded (developer note: will be transformed into url by your environment)
+    embed.set_image(url=BANNER_LOCAL_PATH)
+    embed.set_footer(text="Yama Services – We Will NEVER DM/ADD You First", icon_url=FOOTER_ICON_URL)
+    return embed
+
+# Utility: store metadata
+def save_widget_doc(channel_id: int, message_id: int, selling: float, buying: float):
+    collection.update_one(
+        {"_id": "rate_widget"},
+        {"$set": {
+            "channel_id": channel_id,
+            "message_id": message_id,
+            "selling": float(selling),
+            "buying": float(buying)
+        }},
+        upsert=True
+    )
+
+def get_widget_doc():
+    return collection.find_one({"_id": "rate_widget"})
+
+# ---- SLASH COMMAND ----
+@bot.tree.command(name="buy-sell-gold", description="Create or update the Yama Services gold shop rate embed.")
+@app_commands.describe(
+    selling="Selling rate in $ per M (e.g. 0.17)",
+    buying="Buying rate in $ per M (e.g. 0.13)",
+    channel="Channel to post the embed in (defaults to current channel)"
+)
+async def slash_rate(interaction: discord.Interaction, selling: float, buying: float, channel: discord.TextChannel = None):
+    # Permission check
+    if not interaction.user.guild_permissions.manage_guild:
+        await interaction.response.send_message("You don't have permission to run this command.", ephemeral=True)
+        return
+
+    await interaction.response.defer(ephemeral=True)
+
+    target_channel = channel or interaction.channel
+    doc = get_widget_doc()
+
+    embed = build_rate_embed(selling, buying)
+
+    # If we have existing message id, try to update
+    if doc and "channel_id" in doc and "message_id" in doc:
+        try:
+            ch = bot.get_channel(doc["channel_id"]) or await bot.fetch_channel(doc["channel_id"])
+            msg = await ch.fetch_message(doc["message_id"])
+            # update existing embed
+            await msg.edit(embed=embed)
+            # update rates in DB
+            save_widget_doc(ch.id, msg.id, selling, buying)
+            await interaction.followup.send(f"✅ Updated existing rate embed in {ch.mention}.", ephemeral=True)
+            return
+        except Exception as e:
+            # missing message or fetch error -> recreate below
+            print("Could not update existing message, will recreate. Error:", e)
+
+    # Otherwise send a new message and store IDs
+    sent_msg = await target_channel.send(embed=embed)
+    save_widget_doc(target_channel.id, sent_msg.id, selling, buying)
+    await interaction.followup.send(f"✅ Posted new rate embed in {target_channel.mention}.", ephemeral=True)
+# ----------------- QUEST JSON LOADING -----------------
+def load_quests_from_file(file_path):
+    if not os.path.exists(file_path):
+        return []
+    with open(file_path, "r", encoding="utf-8") as f:
+        try:
+            return json.load(f)
+        except json.JSONDecodeError:
+            return []
+
+MEMBER_QUESTS = load_quests_from_file("quests-members.json")
+OTHER_QUESTS = load_quests_from_file("Mini-Quests.json") + load_quests_from_file("Free-Quests.json")
+
+def get_first_letter(quest_name):
+    """
+    Returns the first letter used for filtering.
+    Skips 'The ' but not 'A '.
+    """
+    quest_name = quest_name.strip()
+    if quest_name.lower().startswith("the "):
+        quest_name = quest_name[4:]  # skip 'The '
+    return quest_name[0].upper() if quest_name else ""
+
+def get_quests_by_range(range_id):
+    """
+    Filter only member quests by first letter.
+    Mini & Free quests are returned separately via dropdown selection, not appended.
+    """
+    if range_id in ["AF", "GL", "MR", "SZ"]:
+        if not MEMBER_QUESTS:
+            return []
+        range_map = {
+            "AF": "ABCDEF",
+            "GL": "GHIJKL",
+            "MR": "MNOPQR",
+            "SZ": "STUVWXYZ"
+        }
+        letters = range_map[range_id]
+        return [q for q in MEMBER_QUESTS if get_first_letter(q["name"]) in letters]
+
+    elif range_id == "MINI":
+        return load_quests_from_file("Mini-Quests.json")  # unfiltered
+
+    elif range_id == "FREE":
+        return load_quests_from_file("Free-Quests.json")  # unfiltered
+
+    else:
+        return []
+
+
+def price_to_usd(value):
+    return (value / 1_000_000) * 0.2  # 1M = $0.2
+
+
+# ----------------- EMBED CREATION -----------------
+# ----------------- EMBED CREATION -----------------
+def create_paginated_embeds(quest_data, title):
+    if not quest_data:
+        return [discord.Embed(title=title, description="No quests found.", color=discord.Color.red())]
+
+    lines = []
+    for q in quest_data:
+        price_gp = q.get("price", 0)  # raw GP
+        price_m = price_gp / 1_000_000  # convert to millions
+        price_usd = price_to_usd(price_gp)  # existing conversion function
+        desc = q.get("description", "No description")
+        note = q.get("note", "No notes")
+
+        lines.append(
+            f"```css\n"
+            f"🪄 {q['name']}\n"
+            f"💵 Price: {price_m:.2f}m | ${price_usd:,.2f}\n"
+            f"```"
+        )
+
+    # Chunk by 1024 character limit per field
+    chunks = []
+    current_chunk = ""
+    for line in lines:
+        if len(current_chunk) + len(line) + 1 > 1024:
+            chunks.append(current_chunk)
+            current_chunk = line
+        else:
+            current_chunk = current_chunk + "\n" + line if current_chunk else line
+    if current_chunk:
+        chunks.append(current_chunk)
+
+    embeds = []
+    for i, chunk_text in enumerate(chunks, start=1):
+        embed = discord.Embed(title=title, color=discord.Color.from_rgb(139, 0, 0))
+        embed.add_field(name=f"Page {i}/{len(chunks)}", value=chunk_text, inline=False)
+        embeds.append(embed)
+
+    return embeds
+
+
+
+# ----------------- PAGINATOR -----------------
+class QuestPaginator(discord.ui.View):
+    def __init__(self, pages):
+        super().__init__(timeout=None)
+        self.pages = pages
+        self.current_page = 0
+
+    @discord.ui.button(label="⬅️ Previous", style=discord.ButtonStyle.secondary)
+    async def previous(self, interaction, button):
+        if self.current_page > 0:
+            self.current_page -= 1
+        await interaction.response.edit_message(embed=self.pages[self.current_page], view=self)
+
+    @discord.ui.button(label="Next ➡️", style=discord.ButtonStyle.secondary)
+    async def next(self, interaction, button):
+        if self.current_page < len(self.pages) - 1:
+            self.current_page += 1
+        await interaction.response.edit_message(embed=self.pages[self.current_page], view=self)
+
+# ----------------- DROPDOWN -----------------
+QUEST_EMOJI_ID = 1434940719142932600
+
+class QuestDropdown(discord.ui.Select):
+    def __init__(self):
+        options = [
+            discord.SelectOption(label="A - F", value="AF", emoji=discord.PartialEmoji(name="130pxQuests", id=QUEST_EMOJI_ID)),
+            discord.SelectOption(label="G - L", value="GL", emoji=discord.PartialEmoji(name="130pxQuests", id=QUEST_EMOJI_ID)),
+            discord.SelectOption(label="M - R", value="MR", emoji=discord.PartialEmoji(name="130pxQuests", id=QUEST_EMOJI_ID)),
+            discord.SelectOption(label="S - Z", value="SZ", emoji=discord.PartialEmoji(name="130pxQuests", id=QUEST_EMOJI_ID)),
+            discord.SelectOption(label="Mini Quests", value="MINI", emoji=discord.PartialEmoji(name="130pxQuests", id=QUEST_EMOJI_ID)),
+            discord.SelectOption(label="Free Quests", value="FREE", emoji=discord.PartialEmoji(name="130pxQuests", id=QUEST_EMOJI_ID)),
+        ]
+        super().__init__(placeholder="🕵️ Quests ", min_values=1, max_values=1, options=options)
+
+    async def callback(self, interaction):
+        category = self.values[0]
+
+        if category in ["AF", "GL", "MR", "SZ"]:
+            quests = get_quests_by_range(category)  # filtered member quests only
+        elif category == "MINI":
+            quests = load_quests_from_file("Mini-Quests.json")  # unfiltered
+        elif category == "FREE":
+            quests = load_quests_from_file("Free-Quests.json")  # unfiltered
+        else:
+            quests = []
+
+        # Log usage
+        log_channel = interaction.client.get_channel(1416754787566747710)
+        if log_channel:
+            await log_channel.send(f"User {interaction.user} used Quest Menu for {category} at {datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S UTC')}")
+
+        if not quests:
+            await interaction.response.send_message("No quests found for this category.", ephemeral=True)
+            return
+
+        pages = create_paginated_embeds(quests, f"Quests {category}")
+        view = QuestPaginator(pages)
+        await interaction.response.send_message(embed=pages[0], view=view, ephemeral=True)
+
+
+class QuestCategoryDropdown(discord.ui.View):
+    def __init__(self):
+        super().__init__(timeout=None)
+        self.add_item(QuestDropdown())
+
+# ----------------- COMMAND -----------------
+@bot.command(name="quest-menu")
+async def quests_dropdown(ctx):
+    view = QuestCategoryDropdown()
+    await ctx.send(view=view)
+
+@bot.command()
+@commands.has_permissions(administrator=True)
+async def tos(ctx):
+    """Send the full Terms of Service embed and auto-react."""
+    embed = discord.Embed(
+        title="📜 Yama Services - Terms of Service",
+        color=discord.Color.gold()
+    )
+
+    embed.description = (
+        "__**Welcome to Yama Services!**__\n"
+        "Before you begin exploring our channels or placing any orders, please take a few minutes to read our Terms of Service carefully.\n"
+        "By agreeing below, you’ll unlock full access to our server and confirm that you understand and accept these terms.\n\n"
+
+        "__**General Information**__\n"
+        "Yama Services is officially managed by:\n"
+        "**Founder:** <@591235017620062220>\n"
+        "**Admins:** <@1135826063914700830>, <@1162727471632875520>\n"
+        "Assisted by our amazing **Staff | No DM** & **Support | NO DM** roles.\n\n"
+
+        "🔒 We’ll **never DM you first** — all communication, payments, and orders happen **inside official ticket channels only**.\n"
+        "If someone messages you pretending to be part of our team, report it immediately.\n"
+        "We provide professional and secure OSRS services tailored to your request.\n\n"
+
+        "__**Payments**__\n"
+        "We currently accept:\n"
+        "• OSRS GP\n"
+        "• Crypto (BTC, ETH, LTC, USDT…)\n"
+        "• Cash App, Zelle, Venmo\n"
+        "• Wise BT\n\n"
+        "💰 **All payments must be made in advance** before any order begins.\n"
+        "🗓️ Long-term orders (3+ weeks) may request split payments.\n"
+        "📌 Bulk orders & promotions must be fully paid upfront.\n"
+        "📍 Payment rates are pinned in payment channels.\n\n"
+
+        "__**Refund Policy**__\n"
+        "We believe in fairness — here’s how refunds work:\n"
+        "• If your goal is achieved early (pet/item drop), unused GP is refunded or moved to another service.\n"
+        "• If **we fail** to complete your order → **100% refund**.\n"
+        "• If **you cancel** without any issue from our side → **90% refund**.\n\n"
+        "**No refunds** if:\n"
+        "❌ You log in during an active order without permission.\n"
+        "❌ You change your password mid-service.\n\n"
+        "Refunds are always processed in **OSRS GP**, regardless of original payment method.\n"
+        "Discounted order refunds will be recalculated using **regular pricing**.\n\n"
+
+        "__**Account Security & Responsibility**__\n"
+        "Your safety is our top priority. Please:\n"
+        "• Change your password and bank PIN after your order.\n"
+        "• Expect to change your password if we switch workers.\n"
+        "• Keep authenticator ON (may slightly delay progress).\n"
+        "• Tell us your country/city for correct VPN location.\n\n"
+        "After each service, always:\n"
+        "• End all active sessions.\n"
+        "• Check linked accounts.\n"
+        "• Verify your account security.\n\n"
+        "⚠️ Any deals done **outside official tickets** result in an instant ban and no refund.\n\n"
+
+        "__**Communication & Support**__\n"
+        "• All updates & questions happen inside tickets only.\n"
+        "• Be respectful — our team will always assist you kindly.\n"
+        "• Staff & Support will **never ask for your login in DMs**.\n"
+        "• Follow Discord guidelines and server rules.\n\n"
+
+        "__**Final Notes & Agreement**__\n"
+        "By clicking **Accept TOS** you confirm:\n"
+        "• You’ve read and accepted Yama Services’ Terms of Service.\n"
+        "• You understand all communication stays inside the server.\n"
+        "• You’re ready to explore our safe and professional OSRS services!\n\n"
+
+        "❤️ Thank you for choosing **Yama Services** — your trust means everything.\n"
+        "We’re excited to help you achieve your OSRS goals smoothly and safely!"
+    )
+
+    embed.set_footer(text="React below to accept our Terms of Service ✅")
+
+    # Send embed
+    message = await ctx.send(embed=embed)
+    await message.add_reaction(TOS_EMOJI)
+
+    # Store message ID in MongoDB
+    tos_collection.update_one(
+        {"_id": "tos_message2"},
+        {"$set": {"message_id2": message.id}},
+        upsert=True
+    )
+
+    await message.add_reaction(TOS_EMOJI)
+
+    await ctx.send("✅ TOS embed sent successfully and reaction added.")
+
+
+# === REACTION EVENT ===
+@bot.event
+async def on_raw_reaction_add(payload):
+    """Gives TOS role when reacting to the TOS embed."""
+    if payload.member is None or payload.member.bot:
+        return
+
+    # Check correct channel
+    if payload.channel_id != TOS_CHANNEL_ID:
+        return
+
+    # Only match the correct emoji
+    if str(payload.emoji) != TOS_EMOJI:
+        return
+
+    # Fetch stored TOS message ID
+    tos_doc = tos_collection.find_one({"_id": "tos_message2"})
+    if not tos_doc or payload.message_id != tos_doc["message_id2"]:
+        return  # Not the correct message
+
+    guild = bot.get_guild(payload.guild_id)
+    if not guild:
+        return
+
+    role = guild.get_role(TOS_ROLE_ID)
+    if role:
+        try:
+            await payload.member.add_roles(role, reason="Accepted Terms of Service")
+            print(f"✅ {payload.member} accepted the TOS and received the role.")
+        except Exception as e:
+            print(f"❌ Failed to assign TOS role: {e}")
+
+
+
 LOG_CHANNEL_ID = 1428430067016405002
 
 class InfoModal(Modal, title="Provide Your Information"):
