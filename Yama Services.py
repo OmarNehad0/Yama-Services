@@ -58,7 +58,7 @@ intents.members = True
 # Create bot instance with intents
 bot = commands.Bot(command_prefix="!", intents=intents)
 
-COLLECTION_NAME = "rate_widget"
+
 
 # URLs / paths
 THUMB_URL = "https://media.discordapp.net/attachments/1428420848661958776/1429670971429884024/avatar.gif"
@@ -1602,6 +1602,7 @@ wallets_collection = db['wallets-yama']
 orders_collection = db['orders-yama']
 counters_collection = db["order_counters-yama"]  # New collection to track order ID
 tos_collection = db["tos_message2"]
+COLLECTION_NAME = "rate_widget"
 # The fixed orders posting channel
 ORDERS_CHANNEL_ID = 1427198874078154822
 # Allowed roles for commands
