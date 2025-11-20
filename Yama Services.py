@@ -324,7 +324,7 @@ async def quests_dropdown(ctx):
 TOS_ROLE_ID = 1427208699688259607  # Role ID to give
 TOS_EMOJI = "✅"  # You can replace this with a custom emoji like <:verify:133420012345678901>
 TOS_CHANNEL_ID = 1426541407622926459  # Optional: set to your TOS channel ID to restrict reaction detection
-
+tos_collection = db["tos_message2"]
 @bot.command()
 @commands.has_permissions(administrator=True)
 async def tos(ctx):
