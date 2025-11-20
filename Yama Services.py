@@ -324,7 +324,6 @@ async def quests_dropdown(ctx):
 TOS_ROLE_ID = 1427208699688259607  # Role ID to give
 TOS_EMOJI = "✅"  # You can replace this with a custom emoji like <:verify:133420012345678901>
 TOS_CHANNEL_ID = 1426541407622926459  # Optional: set to your TOS channel ID to restrict reaction detection
-tos_collection = db["tos_message2"]
 @bot.command()
 @commands.has_permissions(administrator=True)
 async def tos(ctx):
@@ -1602,7 +1601,7 @@ db = client['MongoDB']  # Replace with the name of your database
 wallets_collection = db['wallets-yama']
 orders_collection = db['orders-yama']
 counters_collection = db["order_counters-yama"]  # New collection to track order ID
-
+tos_collection = db["tos_message2"]
 # The fixed orders posting channel
 ORDERS_CHANNEL_ID = 1427198874078154822
 # Allowed roles for commands
